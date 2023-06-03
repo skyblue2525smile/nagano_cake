@@ -3,11 +3,42 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
+<p>名前</p>
+  <div class="field">
+    <%= f.label :family_name %>
+    <%= f.family_name_field, autocomplete:"family_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :given_name %>
+    <%= f.given_name_field, autocomplete:"given_name" %>
+  </div>
+
+<p>メールアドレス</p>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+<p>()</p>
+  <div class="field">
+    <%= f.label :postal_code %>
+    <%= f.postal_code, autocomplete:"postal_code" %>
+  </div>
+
+<p></p>
+  <div class="field">
+    <%= f.label :adress %>
+    <%= f.adress, autocomplete:"adress" %>
+  </div>
+
+<p></p>
+  <div class="field">
+    <%= f.label :telephone_number%>
+    <%= f.telephone_number, autocomplete:"telephone_number" %>
+  </div>
+
+<p>パスワード(6文字以上)</p>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -16,6 +47,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+<p>パスワード(確認用)</p>
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
@@ -27,7 +59,7 @@
 <% end %>
 
 <h2>既に登録済みの方</h2>
-<%= link_to "こちら", root_path %>
+<%= link_to "こちら", public/shared %>
 <p>からログインしてください</p>
 
-<%= render "public/shared/links" %>
+<!--render "public/shared/links" -->
