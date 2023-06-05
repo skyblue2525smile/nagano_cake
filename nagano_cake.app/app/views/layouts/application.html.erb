@@ -11,6 +11,67 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar">
+       <div class="container">
+         <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png') %></a>
+      <% if admin_signed_in? %>
+        <% if request.fullpath.inclide? "/admin" %>
+        <li>
+          <%= link_to "商品一覧", "/admin/items" %>
+        </li>
+
+        <li>
+          <%= link_to "会員一覧", "/admin/customers" %>
+        </li>
+
+        <li>
+          <%= link_to "注文履歴一覧", "/admin" %>
+        </li>
+
+        <li>
+          <%= link_to "ログアウト", "/admin/sign_out" %>
+        </li>
+        <% end %>
+
+      <% elseif user_signed_in? %>
+        <li>
+          <%= link_to "マイページ", "/customers/my_page" %>
+        </li>
+
+        <li>
+          <%= link_to "商品一覧", "/admin/items" %>
+        </li>
+
+        <li>
+          <%= link_to "カート", "/cart_items" %>
+        </li>
+
+        <li>
+          <%= link_to "ログアウト", "/customers/sign_out" %>
+        </li>
+
+      <% else %>
+        <li>
+          <%= link_to "About", "/about" %>
+        </li>
+
+        <li>
+          <%= link_to "商品一覧", "/admin/items" %>
+        </li>
+
+        <li>
+          <%= link_to "新規登録", "/customers/sign_up" %>
+        </li>
+
+        <li>
+          <%= link_to "ログイン", "/customers/sign_in" %>
+        </li>
+
+      <% end %>
+      </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

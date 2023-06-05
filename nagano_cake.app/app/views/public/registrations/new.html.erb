@@ -5,13 +5,24 @@
 
 <p>名前</p>
   <div class="field">
-    <%= f.label :family_name %>
-    <%= f.family_name_field, autocomplete:"family_name" %>
+    <%= f.label :last_name %>
+    <%= f.last_name_field, autocomplete: "last_name" %>
   </div>
 
   <div class="field">
-    <%= f.label :given_name %>
-    <%= f.given_name_field, autocomplete:"given_name" %>
+    <%= f.label :first_name %>
+    <%= f.first_name_field, autocomplete: "first_name" %>
+  </div>
+
+<p>フリガナ</p>
+  <div class="field">
+    <%= f.label :last_name_kana %>
+    <%= last_name_kana_field, autocomplete: "last_name_kana_field" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana_field %>
+    <%= first_name_kana_field, autocomplete:"first_name_kana_field" %>
   </div>
 
 <p>メールアドレス</p>
@@ -20,22 +31,22 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-<p>()</p>
+<p>郵便番号(ハイフンなし)</p>
   <div class="field">
     <%= f.label :postal_code %>
-    <%= f.postal_code, autocomplete:"postal_code" %>
+    <%= f.postal_code, autocomplete: "postal_code" %>
   </div>
 
-<p></p>
+<p>住所</p>
   <div class="field">
     <%= f.label :adress %>
-    <%= f.adress, autocomplete:"adress" %>
+    <%= f.adress, autocomplete: "adress" %>
   </div>
 
-<p></p>
+<p>電話番号(ハイフンなし)</p>
   <div class="field">
     <%= f.label :telephone_number%>
-    <%= f.telephone_number, autocomplete:"telephone_number" %>
+    <%= f.telephone_number, autocomplete: "telephone_number" %>
   </div>
 
 <p>パスワード(6文字以上)</p>
