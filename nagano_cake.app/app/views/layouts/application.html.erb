@@ -6,69 +6,76 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <nav class="navbar">
-       <div class="container">
-         <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png') %></a>
+    <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+         <%= link_to 'Logo', root_path, class: ' navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
       <% if admin_signed_in? %>
         <% if request.fullpath.inclide? "/admin" %>
-        <li>
-          <%= link_to "商品一覧", "/admin/items" %>
+        <li class="nav-item">
+          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "会員一覧", "/admin/customers" %>
+        <li class="nav-item">
+          <%= link_to "会員一覧", "/admin/customers", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "注文履歴一覧", "/admin" %>
+        <li class="nav-item">
+          <%= link_to "注文履歴一覧", "/admin", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
+        <li class="nav-item">
           <%= link_to "ログアウト", "/admin/sign_out" %>
         </li>
         <% end %>
 
       <% elseif user_signed_in? %>
-        <li>
-          <%= link_to "マイページ", "/customers/my_page" %>
+        <li class="nav-item">
+          <%= link_to "マイページ", "/customers/my_page", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "商品一覧", "/admin/items" %>
+        <li class="nav-item">
+          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "カート", "/cart_items" %>
+        <li class="nav-item">
+          <%= link_to "カート", "/cart_items", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "ログアウト", "/customers/sign_out" %>
+        <li class="nav-item">
+          <%= link_to "ログアウト", "/customers/sign_out", method: :delete, class: 'nav-link text-dark' %>
         </li>
 
       <% else %>
-        <li>
-          <%= link_to "About", "/about" %>
+        <li class="nav-item">
+          <%= link_to "About", "/about", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "商品一覧", "/admin/items" %>
+        <li class="nav-item">
+          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "新規登録", "/customers/sign_up" %>
+        <li class="nav-item">
+          <%= link_to "新規登録", "/customers/sign_up", class: 'nav-link text-dark' %>
         </li>
 
-        <li>
-          <%= link_to "ログイン", "/customers/sign_in" %>
+        <li class="nav-item">
+          <%= link_to "ログイン", "/customers/sign_in", class: 'nav-link text-dark' %>
         </li>
 
       <% end %>
+      </ul>
       </div>
       </nav>
     </header>
