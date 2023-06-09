@@ -5,54 +5,49 @@
 
 <p>名前</p>
   <div class="field">
-    <%= f.label :last_name %>
+    <%= f.label :'(姓)' %>
     <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name %>
+    <%= f.label :'(名)' %>
     <%= f.text_field :first_name %>
   </div>
 
 <p>フリガナ</p>
   <div class="field">
-    <%= f.label :last_name_kana %>
+    <%= f.label :'(セイ)' %>
     <%= f.text_field :last_name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name_kana_field %>
+    <%= f.label :'(メイ)' %>
     <%= f.text_field :first_name_kana %>
   </div>
 
 <p>メールアドレス</p>
   <div class="field">
-    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
 <p>郵便番号(ハイフンなし)</p>
   <div class="field">
-    <%= f.label :postal_code %>
     <%= f.text_field :postal_code %>
   </div>
 
 <p>住所</p>
   <div class="field">
-    <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
 
 <p>電話番号(ハイフンなし)</p>
   <div class="field">
-    <%= f.label :telephone_number%>
     <%= f.text_field :telephone_number %>
   </div>
 
 <p>パスワード(6文字以上)</p>
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
+     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
@@ -60,17 +55,17 @@
 
 <p>パスワード(確認用)</p>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  </br>
 
   <div class="actions">
-    <%= f.submit "Sign up", class:"btn btn-success" %>
+    <%= f.submit "新規登録", class:"btn btn-success" %>
   </div>
 <% end %>
+</br>
 
-<h2>既に登録済みの方</h2>
-<%= link_to "こちら", new_customer_session_path %>
-<p>からログインしてください</p>
+<h4>既に登録済みの方</h4>
+<p><%= link_to "こちら", new_customer_session_path %>からログインしてください</p>
 
 <!--render "public/shared/links" -->

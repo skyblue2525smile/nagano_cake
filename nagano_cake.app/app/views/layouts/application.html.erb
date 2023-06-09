@@ -24,7 +24,7 @@
       <% if admin_signed_in? %>
         <% if request.fullpath.inclide? "/admin" %>
         <li class="nav-item">
-          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
+          <%= link_to "商品一覧", "/admin/items/index", class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
@@ -40,7 +40,7 @@
         </li>
         <% end %>
 
-      <% elseif user_signed_in? %>
+      <% elseif public_signed_in? %>
         <li class="nav-item">
           <%= link_to "マイページ", "/customers/my_page", class: 'nav-link text-dark' %>
         </li>
