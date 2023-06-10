@@ -24,54 +24,54 @@
       <% if admin_signed_in? %>
         <% if request.fullpath.inclide? "/admin" %>
         <li class="nav-item">
-          <%= link_to "商品一覧", "/admin/items/index", class: 'nav-link text-dark' %>
+          <%= link_to "商品一覧", admin_items_index_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "会員一覧", "/admin/customers", class: 'nav-link text-dark' %>
+          <%= link_to "会員一覧", admin_customers_index_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "注文履歴一覧", "/admin", class: 'nav-link text-dark' %>
+          <%= link_to "注文履歴一覧", admin_orders_show_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "ログアウト", "/admin/sign_out" %>
+          <%= link_to "ログアウト", destroy_admin_session_path %>
         </li>
         <% end %>
 
-      <% elseif public_signed_in? %>
+      <% elsif customer_signed_in? %>
         <li class="nav-item">
           <%= link_to "マイページ", "/customers/my_page", class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
+          <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "カート", "/cart_items", class: 'nav-link text-dark' %>
+          <%= link_to "カート", cart_items_index_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "ログアウト", "/customers/sign_out", method: :delete, class: 'nav-link text-dark' %>
+          <%= link_to "ログアウト",  destroy_customer_session, method: :delete, class: 'nav-link text-dark' %>
         </li>
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "About", "homes/about", class: 'nav-link text-dark' %>
+          <%= link_to "About", about_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "商品一覧", "/admin/items", class: 'nav-link text-dark' %>
+          <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "新規登録", "/customers/sign_up", class: 'nav-link text-dark' %>
+          <%= link_to "新規登録", new_customer_session_path, class: 'nav-link text-dark' %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "ログイン", "/customers/sign_in", class: 'nav-link text-dark' %>
+          <%= link_to "ログイン", customer_session_path, class: 'nav-link text-dark' %>
         </li>
 
       <% end %>

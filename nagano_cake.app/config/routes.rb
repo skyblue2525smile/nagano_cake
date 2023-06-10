@@ -12,7 +12,7 @@ devise_for :customers, skip: [:passwords], controllers: {
 
     root to: 'homes#top'
     get "/homes/about" => "homes#about", as: "/about"
-    resources :users
+    resources :items, only: [:index, :show]
 
     get 'cart_items/index'
 
