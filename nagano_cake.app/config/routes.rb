@@ -15,7 +15,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :items, only: [:index, :show]
 
     get 'cart_items/index'
-
+    get '/customers/my_page' => "customers#show"
     get 'orders/new'
     get 'orders/index'
     get 'orders/show'

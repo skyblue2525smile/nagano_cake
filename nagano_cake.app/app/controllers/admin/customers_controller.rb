@@ -1,4 +1,8 @@
 class Admin::CustomersController < ApplicationController
+  def index
+
+  end
+
   def show
     @customer = current_user
   end
@@ -14,14 +18,6 @@ class Admin::CustomersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def confirm
-
-  end
-
-  def withdrawal
-
   end
 
 end
