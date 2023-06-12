@@ -1,2 +1,71 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h4>注文履歴詳細</h4>
+
+<h6 style="display: inline-block">注文情報</h6>
+<div class="col-md-8">
+  <table class="table table-bordered">
+    <tbody>
+      <thead class="thead-light">
+      <tr>
+        <th>注文日</th>
+        <td><%= @order.date %></td>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <th>支払い方法</th>
+        <td><%= @order.payment_method %></td>
+      </tr>
+      </thead>
+    </tbody>
+  </table>
+</div>
+
+<h6>請求情報</h6>
+<div class="col-md-8">
+  <table class="table table-bordered">
+    <tbody>
+      <thead class="thead-light">
+      <tr>
+        <th>注文日</th>
+        <td><%= @order.date %></td>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <th>注文商品</th>
+        <td><%= @order.items %></td>
+      </tr>
+      </thead>
+    </tbody>
+  </table>
+</div>
+
+<h6>注文内容</h6>
+<div class="col-md-8">
+  <table class="table table-bordered">
+    <tbody>
+      <thead class="thead-light">
+      <tr>
+        <th>商品</th>
+        <td><%= @order.items %></td>
+      </tr>
+      <tr>
+        <th>単価（税込み）</th>
+        <td><%= @order.purchase_price %></td>
+      </tr>
+      <tr>
+        <th>個数</th>
+        <td><%= @order.items_quantity %></td>
+      </tr>
+      <tr>
+        <th>小計</th>
+        <td><%= @order.payment %></td>
+      </tr>
+      </thead>
+    </tbody>
+  </table>
+</div>

@@ -16,6 +16,9 @@ devise_for :customers, skip: [:passwords], controllers: {
 
     get 'cart_items/index'
     get '/customers/my_page' => "customers#show"
+    get '/customers/confirm' => "customers#cofirm"
+    patch '/customers/:id/withdrawal' => "customers#withdrawal"
+    get '/customers/edit/information' => "customers#edit"
     get 'orders/new'
     get 'orders/index'
     get 'orders/show'

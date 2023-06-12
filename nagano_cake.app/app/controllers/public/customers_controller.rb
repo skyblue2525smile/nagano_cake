@@ -16,11 +16,14 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def confirm
+  def confirm_withdraw;
 
   end
 
   def withdrawal
-
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_parh
   end
 end

@@ -1,0 +1,58 @@
+<h4>会員情報編集画面</h4>
+
+<!--bookersのユーザー情報編集画面を参考にする-->
+
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+
+   <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <h7 style="display: inline-block">名前</h7><div class="field">
+
+          <%= f.label :'(姓)' %>
+          <%= f.text_field :last_name %>
+
+          <%= f.label :'(名)' %>
+          <%= f.text_field :first_name %></br>
+
+
+      <h7 style="display: inline-block">フリガナ</h7>
+
+          <%= f.label :'(セイ)' %>
+          <%= f.text_field :last_name_kana %>
+
+          <%= f.label :'(メイ)' %>
+          <%= f.text_field :first_name_kana %></br>
+
+
+      <h7 style="display: inline-block">郵便番号(ハイフンなし)</h7>
+
+          <%= f.text_field :postal_code %></br>
+
+
+      <h7>住所</h7>
+
+          <%= f.text_field :address %></br>
+
+      <h7>電話番号(ハイフンなし)</h7>
+
+          <%= f.text_field :telephone_number %></br>
+
+
+      <h7>メールアドレス</h7>
+
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %></br>
+
+
+
+     <br/>
+
+     <div style="display: inline-block"><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+     <%= link_to "退会する", customers_confirm_path, class: "btn btn-sm btn-danger" %></div>
+
+   <% end %>
+
+  </div>
+ </div>
+</div>
