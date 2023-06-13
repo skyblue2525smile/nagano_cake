@@ -4,7 +4,7 @@
 
 <div class="container">
  <div class="row">
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class="col-md-8">
 
 
    <%= form_with model: @customer, url: customer_session_path do |f| %>
@@ -20,10 +20,7 @@
       <h7 style="display: inline-block">フリガナ</h7>
 
           <%= f.label :'(セイ)' %>
-          <%= f.text_field :last_name_kana %>
-
-          <%= f.label :'(メイ)' %>
-          <%= f.text_field :first_name_kana %></br>
+          <%= f.text_field :last_name_kana %><%= f.label :'(メイ)' %><%= f.text_field :first_name_kana %></br>
 
 
       <h7 style="display: inline-block">郵便番号(ハイフンなし)</h7>

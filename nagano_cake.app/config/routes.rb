@@ -11,13 +11,13 @@ devise_for :customers, skip: [:passwords], controllers: {
  scope module: :public do
 
     root to: 'homes#top'
-    get "/homes/about" => "homes#about", as: "/about"
+    get "/homes/about" => "homes#about", as: "about"
     resources :items, only: [:index, :show]
 
     get 'cart_items/index'
     get '/customers/my_page' => "customers#show"
-    get '/customers/confirm' => "customers#cofirm"
-    patch '/customers/:id/withdrawal' => "customers#withdrawal"
+    get '/customers/confirm' => "customers#confirm"
+    patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"
     get '/customers/edit/information' => "customers#edit"
     get 'orders/new'
     get 'orders/index'

@@ -16,14 +16,14 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def confirm_withdraw;
-
+  def confirm
+    @customer = Customer.find(current_customer.id)
   end
 
   def withdrawal
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_parh
+    redirect_to root_path
   end
 end

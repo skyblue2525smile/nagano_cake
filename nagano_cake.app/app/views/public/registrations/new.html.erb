@@ -3,60 +3,53 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-<p>名前</p>
-  <div class="field">
+<p  style="display: inline-block">名前</p>
+
     <%= f.label :'(姓)' %>
     <%= f.text_field :last_name %>
-  </div>
 
-  <div class="field">
     <%= f.label :'(名)' %>
-    <%= f.text_field :first_name %>
-  </div>
+    <%= f.text_field :first_name %></br>
 
-<p>フリガナ</p>
-  <div class="field">
+
+<p style="display: inline-block">フリガナ</p>
+
     <%= f.label :'(セイ)' %>
     <%= f.text_field :last_name_kana %>
-  </div>
 
-  <div class="field">
     <%= f.label :'(メイ)' %>
-    <%= f.text_field :first_name_kana %>
-  </div>
+    <%= f.text_field :first_name_kana %></br>
 
-<p>メールアドレス</p>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-<p>郵便番号(ハイフンなし)</p>
-  <div class="field">
-    <%= f.text_field :postal_code %>
-  </div>
+<p style="display: inline-block">メールアドレス</p>
 
-<p>住所</p>
-  <div class="field">
-    <%= f.text_field :address %>
-  </div>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %></br>
 
-<p>電話番号(ハイフンなし)</p>
-  <div class="field">
-    <%= f.text_field :telephone_number %>
-  </div>
 
-<p>パスワード(6文字以上)</p>
-  <div class="field">
+<p style="display: inline-block">郵便番号(ハイフンなし)</p>
+    <%= f.text_field :postal_code %></br>
+
+<p style="display: inline-block">住所</p>
+    <%= f.text_field :address %></br>
+
+
+<p style="display: inline-block">電話番号(ハイフンなし)</p>
+
+    <%= f.text_field :telephone_number %></br>
+
+
+<p style="display: inline-block">パスワード(6文字以上)</p>
+
      <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-<p>パスワード(確認用)</p>
-  <div class="field">
+
+</br><p style="display: inline-block">パスワード(確認用)</p>
+
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+
   </br>
 
   <div class="actions">

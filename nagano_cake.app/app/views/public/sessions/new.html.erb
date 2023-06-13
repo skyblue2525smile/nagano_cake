@@ -21,13 +21,13 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", class:"btn btn-primary" %>
+    <%= f.submit "ログイン", class:"btn btn-primary" %>
   </div>
 <% end %>
 
-<h4>会員登録がお済みでない方</h4>
+</br><h5>会員登録がお済みでない方</h5>
 
-<%= link_to "こちら", root_path %>
-<p></p>
+<p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
+
 
 <%= render "public/shared/links" %>
