@@ -1,2 +1,26 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h5>商品編集</h5>
+ <%= form_with model: @item, url: items_path, method: :post do |f| %>
+
+     <h7>商品画像</h7>
+     <%= f.file_field :item_image, accept: "image/*" %>
+     <br/>
+
+     <h7>商品名</h7>
+
+       <%= f.text_field :name, autofocus: true, id:"inputName", placeholder="商品名" %>
+     <br/>
+
+      <h7>商品説明</h7>
+
+       <%= f.text_field :introduction, autofocus: true, id:"inputName" %>
+      <br/>
+
+     <h7>税込価格</h7>
+
+
+     <%= f.text_field :price, autofocus: true, id:"inputIntroduction" %>円
+
+     <br/>
+     <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+
+   <% end %>

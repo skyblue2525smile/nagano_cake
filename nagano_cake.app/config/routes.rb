@@ -31,14 +31,12 @@ devise_for :customers, skip: [:passwords], controllers: {
   sessions: "admin/sessions"
   }
  namespace :admin do
+    resources :items, only: [:index, :new, :show, :edit]
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
     get 'orders/show'
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+
  end
 
 

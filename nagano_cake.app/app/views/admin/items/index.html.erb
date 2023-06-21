@@ -1,2 +1,24 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<h4>商品一覧</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+
+    <tr>
+      <td><%= item_id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate items %>
