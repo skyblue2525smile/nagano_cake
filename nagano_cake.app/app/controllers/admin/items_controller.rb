@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
@@ -13,12 +14,15 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
   end
 
   private
