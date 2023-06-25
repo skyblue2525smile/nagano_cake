@@ -1,26 +1,34 @@
+<div class = mx-auto style="width: 400px;">
 <h5>商品新規登録</h5>
  <%= form_with model: @item, url: items_path, method: :post do |f| %>
 
+     <div class = mb-3>
      <h7>商品画像</h7>
      <%= f.file_field :item_image, accept: "image/*" %>
-     <br/>
+     </div>
 
+     <div class = mb-3>
      <h7>商品名</h7>
 
-       <%= f.text_field :name, autofocus: true, id:"inputName", placeholder="商品名" %>
-     <br/>
+       <%= f.text_field :name, autofocus: true, :placeholder => "商品名" %>
+     </div>
 
+      <div class = mb-3>
       <h7>商品説明</h7>
 
-       <%= f.text_field :introduction, autofocus: true, id:"inputName" %>
-      <br/>
+       <%= f.text_area :introduction, rows:3, autofocus: true, :placeholder => "ここに説明文を記述します" %>
+      </div>
 
+     <div class = mb-3>
      <h7>税込価格</h7>
-
 
      <%= f.text_field :price, autofocus: true, id:"inputIntroduction" %>円
 
-     <br/>
-     <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
+     </div>
+
+     <div class = mx-auto>
+     <%= f.submit "新規登録", class: "btn btn-success" %>
+     </div>
 
    <% end %>
+</div>

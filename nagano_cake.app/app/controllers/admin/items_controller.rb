@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = items_url(params[:page])
+    @items = Item.page(params[:page])
   end
 
   def new
