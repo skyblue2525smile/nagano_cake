@@ -1,24 +1,33 @@
-<h4>商品一覧</h4>
+<div class= mx-auto style="width: 450px;" "p-3 mb-2 bg-secondary text-white">
+  <h5>商品一覧</h5>
+</div>
+<div class="col-md-8">
 <table>
-  <thead>
+ <tbody>
+  <thead class="thead-light">
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
       <th colspan="4"></th>
     </tr>
-  </thead>
 
-  <tbody>
+
+
     <% @items.each do |item| %>
 
     <tr>
-      <td><%= item_id %></td>
+      <td><%= item.id %></td>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
     </tr>
     <% end %>
+
+     <%= link_to new_admin_item_path, class: "btn btn-default" do %>
+       <i class="fa-solid fa-plus"></i>
+     <% end %>
+   </thead>
   </tbody>
 </table>
-
+</div>
 <%= paginate @items %>
