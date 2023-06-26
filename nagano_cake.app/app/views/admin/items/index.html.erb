@@ -1,33 +1,39 @@
-<div class= mx-auto style="width: 450px;" "p-3 mb-2 bg-secondary text-white">
-  <h5>商品一覧</h5>
+ <div class = "p-3 text-white" style="width: 450px;">
+  <div class = "bg-secondary w-25 mt-5 ml-5"><h5>商品一覧</h5></div>
 </div>
-<div class="col-md-8">
-<table>
- <tbody>
-  <thead class="thead-light">
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th colspan="4"></th>
-    </tr>
-
-
-
-    <% @items.each do |item| %>
-
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
-    </tr>
-    <% end %>
-
+<div class= "text-right mr-5">
      <%= link_to new_admin_item_path, class: "btn btn-default" do %>
        <i class="fa-solid fa-plus"></i>
      <% end %>
-   </thead>
+ </div>
+<div class="col-md-8 mt-0 ml-5 mr-5 mb-5">
+    <!--div class="text-right"-->
+    <!--button type="button" class="btn btn-primary rounded-circle p-0 mb-2 ml-2" style="width:2rem;height:2rem;">＋</button-->
+    <!--/div-->
+
+<table>
+
+  <thead class="bg-light">
+    <tr>
+      <th class="p-2">商品ID</th>
+      <th class="p-2">商品名</th>
+      <th class="p-2">税抜価格</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+    <% @items.each do |item| %>
+
+    <tr>
+      <td class="p-3"><%= item.id %></td>
+      <td class="p-3"><%= item.name %></td>
+      <td class="p-3"><%= item.price %></td>
+    </tr>
+    <% end %>
+
   </tbody>
 </table>
 </div>
+
 <%= paginate @items %>
