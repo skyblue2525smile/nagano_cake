@@ -1,2 +1,30 @@
 <h4>商品詳細</h4>
+<div class = "container">
+    <div class = "row m-3">
+        <div class = "col-md-5"><%= image_tag @item.get_profile_image(300, 300) %></div>
+        <div class = "col-md-7">
+            <table>
+              <thead>
+                <tr>
+                  <th class="p-2">商品名</th>
+                  <td><%= @item.name %></td>
+                </tr>
 
+                <tr>
+                  <th class="p-2">商品説明</th>
+                  <td><%= @item.introduction %></td>
+                </tr>
+
+                <tr>
+                  <th class="p-2">税込価格(税抜価格)</th>
+                  <td><%= (@item.price*1.10).round.to_s + "（" + @item.price.to_s + "）" + "円" %></td>
+                </tr>
+              </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+</div>

@@ -1,26 +1,38 @@
-<h5>商品編集</h5>
- <%= form_with model: @item, url: items_path, method: :post do |f| %>
+<div class = "p-3 text-black" style="width: 450px;">
+  <div class = "bg-light w-25 mt-5 ml-5 text-center"><h5>商品編集</h5></div>
+</div>
 
-     <h7>商品画像</h7>
+
+ <div class = mx-auto style="width: 400px;">
+  <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+
+     <div class = "mb-3">
+     <h7 class = "p-3">商品画像</h7>
      <%= f.file_field :item_image, accept: "image/*" %>
-     <br/>
+     </div>
 
-     <h7>商品名</h7>
+     <div class = "mb-3">
+     <h7 class = "p-4">商品名</h7>
 
-       <%= f.text_field :name, autofocus: true, id:"inputName", placeholder="商品名" %>
-     <br/>
+       <%= f.text_field :name, autofocus: true, :placeholder => "商品名" %>
+     </div>
 
-      <h7>商品説明</h7>
+      <div class = "mb-3">
+      <h7 class = "p-3">商品説明</h7>
 
-       <%= f.text_field :introduction, autofocus: true, id:"inputName" %>
-      <br/>
+       <%= f.text_area :introduction, rows:3, autofocus: true, :placeholder => "ここに説明文を記述します" %>
+      </div>
 
-     <h7>税込価格</h7>
-
+     <div class = "mb-3">
+     <h7 class = "p-3">税込価格</h7>
 
      <%= f.text_field :price, autofocus: true, id:"inputIntroduction" %>円
 
-     <br/>
-     <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
-
+     </div>
+</div>
+<div class = "mx-auto" style="width: 250px;">
+     <%= f.submit "変更を保存", class: "btn btn-success" %>
+     </div>
+</div>
    <% end %>
+
