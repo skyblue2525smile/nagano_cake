@@ -1,1 +1,12 @@
-<商品詳細ページ>
+<div class = "container">
+  <div class = "row m-3">
+    <div class = "col-md-4"></div>
+    <div class = "col-md-8">
+        <%= image_tag @item.get_profile_image(300, 300) %>
+        <p><%= @item.name %></p>
+        <p><%= @item.introduction %></p>
+        <p><%= "￥" + (@item.price*1.10).round.to_s + "（税込）" %></p>
+
+    </div>
+  </div>
+</div>
