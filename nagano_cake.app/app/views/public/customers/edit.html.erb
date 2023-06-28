@@ -7,7 +7,7 @@
   <div class="col-md-8">
 
 
-   <%= form_with model: @customer, url: customer_session_path do |f| %>
+   <%= form_with model: @customer, url: customer_session_path, method: :patch do |f| %>
       <h7 style="display: inline-block">名前</h7><div class="field">
 
           <%= f.label :'(姓)' %>

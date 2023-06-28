@@ -1,2 +1,56 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h4>customer.nameさんの会員情報編集</h4>
+
+<!--bookersのユーザー情報編集画面を参考にする-->
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-8">
+
+
+   <%= form_with model: @customer, url: admin_customers_show_path, method: :patch do |f| %>
+
+      <h7 style="display: inline-block">氏名</h7><div class="field">
+
+          <%= f.label :'(姓)' %>
+          <%= f.text_field :last_name %>
+
+          <%= f.label :'(名)' %>
+          <%= f.text_field :first_name %></br>
+
+
+      <h7 style="display: inline-block">フリガナ</h7>
+
+          <%= f.label :'(セイ)' %>
+          <%= f.text_field :last_name_kana %><%= f.label :'(メイ)' %><%= f.text_field :first_name_kana %></br>
+
+
+      <h7 style="display: inline-block">郵便番号</h7>
+
+          <%= f.text_field :postal_code %></br>
+
+
+      <h7>住所</h7>
+
+          <%= f.text_field :address %></br>
+
+      <h7>電話番号</h7>
+
+          <%= f.text_field :telephone_number %></br>
+
+
+      <h7>メールアドレス</h7>
+
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %></br>
+
+
+
+     <br/>
+
+     <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+
+
+   <% end %>
+
+  </div>
+ </div>
+</div>
