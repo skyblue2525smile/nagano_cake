@@ -16,8 +16,8 @@
       <% @customers.each do |customer| %>
 
       <tr>
-        <td class = "p-3"><%= customer.id %></td>
-        <td class = "p-3"><%= link_to customer.name, admin_customers_show_path(customer.id)%></td>
+        <td class = "p-3"><%= customer_id %></td>
+        <td class = "p-3"><%= link_to customer.last_name + customer.first_name, admin_customers_show_path(customer.id)%></td>
         <td class = "p-3"><%= customer.email %></td>
       </tr>
       <% end %>

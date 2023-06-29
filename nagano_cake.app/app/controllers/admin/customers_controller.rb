@@ -4,15 +4,15 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_user
+    @customer = Customer.find(params[:id])
   end
 
   def edit
-    @customer = current_user
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = current_user
+    @customer = Customer.find(params[:id])
     if @customer.update
       redirect_to
     else
