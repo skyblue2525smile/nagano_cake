@@ -32,6 +32,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
  namespace :admin do
     resources :items
+    resources :cart_items, exit
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'

@@ -8,7 +8,7 @@
         <p><%= @item.name %></p>
         <p><%= @item.introduction %></p>
         <p><%= "￥" + (@item.price*1.10).round.to_s + "（税込）" %></p>
-        <p><%#= form.select :amount, ["1", "2", "3"] %></p>
+        <p><%= f.select :amount, [['1',1], ['2,'2], ['3',3]] %></p>
         <p><%= link_to "カートに入れる", cart_items_index_path, class: "btn btn-success" %></p>
 
     </div>
