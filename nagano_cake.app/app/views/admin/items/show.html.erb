@@ -2,7 +2,12 @@
 <div class = "container">
     <div class = "row m-3">
         <div class = "col-md-5">
-          <%= image_tag @item.get_profile_image(300, 300) %></div>
+          <% if @item.image.attached? %>
+            <%= image_tag @item.image, size: "300x300" %>
+          <% else %>
+            <%= image_tag @item.get_profile_image(300, 300), size: "300x300" %>
+          <% end %>
+          </div>
         <div class = "col-md-7">
             <table>
               <thead>

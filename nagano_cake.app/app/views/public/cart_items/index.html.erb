@@ -1,2 +1,23 @@
 <h5>ショッピングカート</h5><%= link_to "カートを空にする", %>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<table class="table table-bordered">
+  <tbody>
+    <thead class="thead-light">
+      <tr>
+        <th class="p-2">商品名</th>
+        <th class="p-2">単価(税込)</th>
+        <th class="p-2">数量</th>
+        <th class="p-2">小計</th>
+        <th class="p-2"></th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+
+      <tr>
+        <td class="p-3"><%= cart_item.name %></td>
+        <td class="p-3"><%= cart_item.price %></td>
+        <td class="p-3"><%= cart_item.amount %></td>
+      </tr>
+    </tbody>

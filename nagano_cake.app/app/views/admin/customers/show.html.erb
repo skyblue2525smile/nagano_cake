@@ -1,5 +1,5 @@
 <div class = "p-3 text-black" style = "width: 450px;">
-  <div class = "bg-secondary w-25 mt-5 ml-5"><h5>customer.nameさんの会員詳細</h5></div>
+  <div class = "bg-secondary w-25 mt-5 ml-5"><h5><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h5></div>
 </div>
 
 <div class = "col-md-8">
@@ -14,7 +14,7 @@
 
         <tr>
           <th>氏名</th>
-          <td><%= @customer.name %></td>
+          <td><%= @customer.last_name + @customer.first_name %></td>
         </tr>
 
         <tr>
@@ -48,7 +48,7 @@
 </div>
 
 <div style="display: inline-block">
-  <%= link_to "編集する", admin_customers_edit_path, class: "btn btn-success" %>
+  <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
   <%= link_to "注文履歴一覧を見る", admin_orders_show_path, class: "btn btn-primary" %>
 </div>
 
