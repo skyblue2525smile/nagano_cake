@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
+    @item = Item.find(params[:id])
   end
 
   def update
@@ -8,6 +9,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.update(cart_item_params)
       redirect_to :index
     else
+      @item = Item.find(params[:id])
       render admin_item_path(@item.id)
     end
   end

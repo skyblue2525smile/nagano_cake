@@ -13,7 +13,11 @@ devise_for :customers, skip: [:passwords], controllers: {
     root to: 'homes#top'
     get "/homes/about" => "homes#about", as: "about"
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :index, :show] do
+     collection { post 'confirm'}
+     collection { get 'thanks'}
+     collection { post 'create'}
+    end
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection { delete 'destroy_all'}
     end
@@ -31,9 +35,8 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
  namespace :admin do
     resources :items
-    resources :cart_items
     resources :customers, only: [:index, :show, :edit]
-    get 'orders/show'
+    get 'orders/show/:id' => "orders#show"
 
  end
 

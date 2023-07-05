@@ -1,4 +1,4 @@
-<h5>ショッピングカート</h5><%= link_to "カートを空にする", %>
+<h5>ショッピングカート</h5><%= link_to "カートを空にする", admin_cart_item_path(@cart_item.id) %>
 <table class="table table-bordered">
   <tbody>
     <thead class="thead-light">
@@ -15,9 +15,16 @@
     <tbody>
       <% @cart_items.each do |cart_item| %>
 
-      <tr>
-        <td class="p-3"><%= cart_item.name %></td>
-        <td class="p-3"><%= cart_item.price %></td>
-        <td class="p-3"><%= cart_item.amount %></td>
-      </tr>
+        <tr>
+          <td class="p-3"><%= cart_item.name %></td>
+          <td class="p-3"><%= cart_item.item.with_tax_price %></td>
+          <td class="p-3"><%= cart_item.amount %><%= link_to "変更", item_path(@item.id) %></td>
+          <td class="p-3"><%= cart_item.subtotal %></td>
+          <td class="p-3"><%= link_to "削除する", admin_item_path(@item.id) %></td>
+          <%= link_to "買い物を続ける", admin_items_path %>
+          <% @合計金額　+= cart_item.subtotal %>
+        </tr>
+      <% end %>
     </tbody>
+    <%= link_to "情報入力に進む", %>
+</table>
