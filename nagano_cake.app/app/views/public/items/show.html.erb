@@ -9,6 +9,8 @@
         <p><%= @item.introduction %></p>
         <p><%= "￥" + (@item.price*1.10).round.to_s + "（税込）" %></p>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <p><%= f.select :amount, [['1',1], ['2',2], ['3',3]] %></p>
         <p><%= f.submit "カートに入れる", class: "btn btn-success" %></p>
         <% end %>
