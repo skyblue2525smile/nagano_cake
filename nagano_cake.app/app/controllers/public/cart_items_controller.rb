@@ -28,7 +28,9 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    if @cart_item.save
+    if @cart_item.find_by(params[:id]).present?
+      redirect_to :index
+    elsif @cart_item.save
       redirect_to :index
     else
       render admin_item_path(@item.id)
