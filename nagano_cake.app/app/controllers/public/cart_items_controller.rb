@@ -28,12 +28,14 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    if @cart_item.find_by(params[:id]).present?
+    @cart_items = current_user.cart_items.all
+    @cart_items.each do |cart_item|
+    if current_customer.cart_items.find_by(item_id: @cart_item.item_id).present?
+      @cart_item.amount = cart_item.amount += @cart_item.amount
+      cart_item.update_attribute(:amount, new_amount)
+
+    else @cart_item.save
       redirect_to :index
-    elsif @cart_item.save
-      redirect_to :index
-    else
-      render admin_item_path(@item.id)
     end
   end
 
