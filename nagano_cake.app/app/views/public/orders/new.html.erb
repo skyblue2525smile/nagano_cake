@@ -1,6 +1,11 @@
 <h5>注文情報入力</h5>
 <div>
   <p>支払方法</p>
+  <%= f.radio_button :payment_method, "credit_card"%>
+  <%= f.label :payment_method_credit_card, "クレジットカード" %>
+
+  <%= f.radio_button :payment_method, "transfer" %>
+  <%=f.label :payment_method_transfer, "銀行振込" %>
 </div>
 <div>
   <p>お届け先</p>
