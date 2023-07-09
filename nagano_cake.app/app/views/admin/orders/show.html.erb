@@ -1,2 +1,65 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h5>注文履歴詳細</h5>
+<table>
+  <thead>
+    <tr>
+      <th class="p-2">購入者</th>
+      <th class="p-2"><%= customer_id.name %></th>
+    </tr>
+
+    <tr>
+      <td class="p-2">注文日</td>
+      <td class="p-2"><%= customer_id.order_date %></td>
+    </tr>
+
+    <tr>
+      <td class="p-2">配送先</td>
+      <td class="p-2"><%= post_code + address + mailling_label %>></td>
+    </tr>
+
+    <tr>
+      <td class="p-2">支払方法</td>
+      <td class="p-2"><%= method_of_payment %></td>
+    </tr>
+  </thead>
+</table>
+
+<table class="table table-bordered m-2">
+  <thead class="thead-light">
+    <tr>
+      <th class="p-2">商品名</th>
+      <th class="p-2">単価(税込)</th>
+      <th class="p-2">数量</th>
+      <th class="p-2">小計</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td class="p-2"><%= order.item.name %></td>
+      <td class="p-2"><%= order.item.with_tax_price %></td>
+      <td class="p-2"><%= order.amount %></td>
+      <td class="p-2"><%= (order.item.price * 1.1).floor * order.amount %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th class="p-2">商品合計</th>
+      <th class="p-2"><%= total_amount %>円</th>
+    </tr>
+
+    <tr>
+    <td class="p-2">送料</td>
+    <td class="p-2"><%= postage %>円</td>
+    </tr>
+
+    <tr>
+      <td class="p-2">請求金額合計</td>
+      <td class="p-2"><%= total_amount + postage %>円</td>
+    </tr>
+  </thead>
+</table>
