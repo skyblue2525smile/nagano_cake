@@ -1,14 +1,16 @@
 <h5>注文情報入力</h5>
-<div>
-  <p>支払方法</p>
-  <%= f.radio_button :payment_method, "credit_card"%>
-  <%= f.label :payment_method_credit_card, "クレジットカード" %>
+<div class="m-2">
+  <p >支払方法</p>
+  <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+  <p><%= f.radio_button :payment_method, "credit_card"%>
+  <%= f.label :payment_method_credit_card, "クレジットカード" %></p>
 
-  <%= f.radio_button :payment_method, "transfer" %>
-  <%=f.label :payment_method_transfer, "銀行振込" %>
-</div>
-<div>
-  <p>お届け先</p>
+  <p><%= f.radio_button :payment_method, "transfer" %>
+  <%=f.label :payment_method_transfer, "銀行振込" %></p>
+
+  <p >お届け先</p>
+  <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+
+  <% end %>
 </div>
 
-<%= link_to "確認画面へ進む", _path, class:"btn btn-primary" %>
