@@ -1,1 +1,61 @@
-<h1>confirm</h1>
+<div class = "container">
+  <div class = "p-3 text-black" style = "width: 400px;">
+      <span class = "bg-light pr-3 pl-3 h5">注文情報確認</span>
+  </div>
+
+  <div class="row"></div>
+  <div class="col-md-8">
+    <table class ="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% .each do || %>
+        <tr>
+          <td><%=%></td>
+          <td><%=%></td>
+          <td><%=%></td>
+          <td><%=%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <table class ="table table-bordered">
+      <thead class="thead-light">
+
+        <tr><th>送料</th></tr>
+        <tr><th><%= %></th></tr>
+
+        <tr><td>商品合計</td></tr>
+        <tr><td><%=%></td></tr>
+
+        <tr><th>請求金額</th></tr>
+        <tr><td><%=%></td></tr>
+      </thead>
+    </table>
+  </div>
+
+  <table>
+    <tr>
+      <th><b>支払方法</b></th>
+      <th>クレジットカード</th>
+    </tr>
+
+    <tr>
+      <td><b>お届け先</b></td>
+      <td><%= current_customer.post_code%><%= current_customer.address %></br>
+          <%= current_customer.name %>
+      </td>
+    </tr>
+  </table>
+  <div class = "text-center">
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+  </div>
+</div>

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_081258) do
     t.integer "customer_id", null: false
     t.string "address_name", null: false
     t.string "address", null: false
+    t.string "postal_code", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_addresses_on_customer_id"

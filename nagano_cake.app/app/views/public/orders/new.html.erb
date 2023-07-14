@@ -7,11 +7,11 @@
 
   <div class="ml-3">
   <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
-  <p><%= f.radio_button :method_of_payment, "credit_card"%>
-  <%= f.label :method_of_payment_credit_card, "クレジットカード" %></p>
+  <p><%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></p>
 
-  <p><%= f.radio_button :method_of_payment, "transfer" %>
-  <%=f.label :method_of_payment_transfer, "銀行振込" %></p>
+  <p><%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%=f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %></p>
   </div>
 
   <p><b>お届け先</b></p>
