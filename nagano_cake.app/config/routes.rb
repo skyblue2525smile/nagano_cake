@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
 
 
+  namespace :public do
+    get 'addresses/new'
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  get 'addresses/new'
+  get 'addresses/index'
+  get 'addresses/edit'
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, skip: [:passwords], controllers: {
@@ -21,7 +29,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection { delete 'destroy_all'}
     end
-    resources :address, only: [:index, :create, :edit, :update, :destory]
+    resources :address, only: [:create, :index, :edit, :update, :destory]
     get '/customers/my_page' => "customers#show"
     get '/customers/confirm' => "customers#confirm"
     patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"

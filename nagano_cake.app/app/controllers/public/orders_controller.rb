@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
         @order.post_code = current_customer.postal_code
         @order.address = current_customer.address
-        @order.mailling_label = current_customer.first_name + current_customer.last_name
+        @order.mailling_label = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
         @address = Address.find(params[:order][:address_id])
         @order.address_post_code = @address.post_code
@@ -29,6 +29,8 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items.all
     @order.customer_id = current_customer.id
+    @order.total_amount = @cart_items.cart_items_total_price(@cart_items)
+    @order.postage = 800
   end
 
   def thanks
@@ -40,10 +42,11 @@ class Public::OrdersController < ApplicationController
     @order.save
 
     current_customer.cart_items.each do |cart_item|
-      @ordered_item = Order.new
+      @ordered_item = OrderDetail.new
       @ordered_item.order_id = @order.id
-      @ordered_item.amount = cart_item.amount
-      @ordered_item.tax_include_price = (cart_item.price*1.08).floor
+      @ordered_item.item_id = cart_item.item_id
+      @ordered_item.quantity = cart_item.amount
+      @ordered_item.purchase_price = (cart_item.item.price*1.1).floor
       @ordered_item.save
     end
 
@@ -53,7 +56,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:postage, :method_of_payment, :post_code, :address, :mailling_label)
+    params.require(:order).permit(:postage, :method_of_payment, :post_code, :address, :mailling_label, :total_amount)
   end
 
   def address_params
