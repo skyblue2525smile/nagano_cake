@@ -1,10 +1,11 @@
 <div class = "container">
-  <div class = "row m-3">
-    <div class = "col-md-4"></div>
-    <div class = "col-md-4">
+  <div class = "row">
+    <div class = "col-md-3 mt-5"></div>
+
+    <div class = "col-md-4 mt-5">
         <%= image_tag @item.get_profile_image(300, 300) %>
     </div>
-    <div class = "col-md-4">
+    <div class = "col-md-5 mt-5">
         <p><%= @item.name %></p>
         <p><%= @item.introduction %></p>
         <p><%= "￥" + (@item.price*1.10).round.to_s + "（税込）" %></p>

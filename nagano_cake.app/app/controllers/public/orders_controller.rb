@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
         @order.adddress_address = @address.address
         @order.maillng_label = @address.name
     else
-      reder 'new'
+      render 'new'
     end
 
     @cart_items = current_customer.cart_items.all
