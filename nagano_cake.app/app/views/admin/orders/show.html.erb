@@ -1,5 +1,5 @@
 <div class = "container">
-  <div class = "p-3 text-black" style = "width: 400px;">
+  <div class = "p-3 text-black">
       <span class = "bg-light pr-3 pl-3 h5">注文履歴詳細</span>
   </div>
 
@@ -7,21 +7,21 @@
   <thead>
     <tr>
       <th class="p-2">購入者</th>
-      <th class="p-2"><%= customer_id.name %></th>
+      <td class="p-2"><%= customer_id.name %></td>
     </tr>
 
     <tr>
-      <td class="p-2">注文日</td>
+      <th class="p-2">注文日</th>
       <td class="p-2"><%= customer_id.order_date %></td>
     </tr>
 
     <tr>
-      <td class="p-2">配送先</td>
+      <th class="p-2">配送先</th>
       <td class="p-2"><%= post_code + address + mailling_label %>></td>
     </tr>
 
     <tr>
-      <td class="p-2">支払方法</td>
+      <th class="p-2">支払方法</th>
       <td class="p-2"><%= method_of_payment %></td>
     </tr>
   </thead>

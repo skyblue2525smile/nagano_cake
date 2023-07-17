@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-  namespace :public do
-    get 'addresses/new'
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  get 'addresses/new'
-  get 'addresses/index'
-  get 'addresses/edit'
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, skip: [:passwords], controllers: {
@@ -45,7 +35,7 @@ devise_for :customers, skip: [:passwords], controllers: {
  namespace :admin do
     root to: 'homes#top'
     resources :items
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
     get 'orders/show/:id' => "orders#show"
 
  end

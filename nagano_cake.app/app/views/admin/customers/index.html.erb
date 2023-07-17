@@ -1,27 +1,30 @@
-<div class = "p-3 text-white" style = "width: 450px;">
-  <div class = "bg-secondary w-25 mt-5 ml-5"><h5>会員一覧</h5></div>
-</div>
-<div class = "col-md-8 mt-0 ml-5 mr-5 mb-5">
-  <table>
-    <thead class = "bg-light">
-      <tr>
-        <th class = "p-2">会員ID</th>
-        <th class = "p-2">氏名</th>
-        <th class = "p-2">メールアドレス</th>
-        <th colspan = "4"></th>
-      </tr>
-    </thead>
+<div class = "container">
+  <div class = "p-3 text-black">
+        <span class = "bg-light pr-3 pl-3 h5">会員一覧</span>
+  </div>
 
-    <tbody>
-      <% @customers.each do |customer| %>
+  <div class = "col-md-8 mt-0 ml-5 mr-5 mb-5">
+    <table>
+      <thead class = "bg-light">
+        <tr>
+          <th class = "p-2">会員ID</th>
+          <th class = "p-2">氏名</th>
+          <th class = "p-2">メールアドレス</th>
+          <th colspan = "4"></th>
+        </tr>
+      </thead>
 
-      <tr>
-        <td class = "p-3"><%= customer.id %></td>
-        <td class = "p-3"><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id)%></td>
-        <td class = "p-3"><%= customer.email %></td>
-      </tr>
-      <% end %>
+      <tbody>
+        <% @customers.each do |customer| %>
 
-    </tbody>
-  </table>
+        <tr>
+          <td class = "p-3"><%= customer.id %></td>
+          <td class = "p-3"><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id)%></td>
+          <td class = "p-3"><%= customer.email %></td>
+        </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,2 +1,13 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<p style="display: inline-block">郵便番号(ハイフンなし)</p>
+    <%= f.text_field :postal_code %></br>
+
+<p style="display: inline-block">住所</p>
+    <%= f.text_field :address %></br>
+
+<p  style="display: inline-block">宛名</p>
+
+    <%= f.label :'(姓)' %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :'(名)' %>
+    <%= f.text_field :first_name %></br>
