@@ -1,66 +1,88 @@
- <div class = "p-3 text-black" style = "width: 400px;">
-      <span class = "bg-light pr-3 pl-3 h5">新規会員登録</span>
+<div class="container">
+  <div class = "p-3 text-black">
+    <span class = "bg-light pr-3 pl-3 h5">新規会員登録</span>
   </div>
+ <div class="row">
+  <div class="col-md-8">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
+    <table>
+      <thead>
+         <tr>
+           <th class ="pr-3 pb-3">氏名</th>
+           <td class="pb-3">
+               '(姓)'<%= f.text_field :last_name %> &emsp; '(名)'<%= f.text_field :first_name %>
+           </td>
+         </tr>
 
-<p  style="display: inline-block">名前</p>
+         <tr>
+           <th class ="pr-3 pb-3">フリガナ</th>
+           <td class="pb-3">
+               '(セイ)'<%= f.text_field :last_name_kana %> &emsp; '(メイ)'<%= f.text_field :first_name_kana %>
+           </td>
+         </tr>
 
-    <%= f.label :'(姓)' %>
-    <%= f.text_field :last_name %>
+         <tr>
+           <th class ="pr-3 pb-3">郵便番号(ハイフンなし)</th>
+           <td class="pb-3"><%= f.text_field :postal_code %></td>
+         </tr>
 
-    <%= f.label :'(名)' %>
-    <%= f.text_field :first_name %></br>
+         <tr>
+           <th class ="pr-3 pb-3">住所</th>
+           <td class="pb-3"><%= f.text_field :address, size:60 %></td>
+         </tr>
 
+         <tr>
+           <th class ="pr-3 pb-3">電話番号</th>
+           <td class="pb-3"><%= f.text_field :telephone_number %></td>
+         </tr>
 
-<p style="display: inline-block">フリガナ</p>
+         <tr>
+           <th class ="pr-3 pb-3">メールアドレス</th>
+           <td class="pb-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+         </tr>
 
-    <%= f.label :'(セイ)' %>
-    <%= f.text_field :last_name_kana %>
+         <tr>
+           <th class ="pr-3 pb-3">パスワード(6文字以上)</th>
+           <td class="pb-3">
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+           </td>
+         </tr>
 
-    <%= f.label :'(メイ)' %>
-    <%= f.text_field :first_name_kana %></br>
+         <tr>
+           <th class ="pr-3 pb-3"></th>
+           <td class="pb-3">
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+           </td>
+         </tr>
 
+         <tr>
+           <th class ="pr-3 pb-3">パスワード(確認用)</th>
+           <td class="pb-3">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+           </td>
+         </tr>
 
-<p style="display: inline-block">メールアドレス</p>
+      </thead>
+    </table>
 
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %></br>
-
-
-<p style="display: inline-block">郵便番号(ハイフンなし)</p>
-    <%= f.text_field :postal_code %></br>
-
-<p style="display: inline-block">住所</p>
-    <%= f.text_field :address %></br>
-
-
-<p style="display: inline-block">電話番号(ハイフンなし)</p>
-
-    <%= f.text_field :telephone_number %></br>
-
-
-<p style="display: inline-block">パスワード(6文字以上)</p>
-
-     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-
-
-</br><p style="display: inline-block">パスワード(確認用)</p>
-
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-
-  </br>
 
   <div class="actions">
     <%= f.submit "新規登録", class:"btn btn-success" %>
   </div>
 <% end %>
-</br>
+
 
 <h4>既に登録済みの方</h4>
 <p><%= link_to "こちら", new_customer_session_path %>からログインしてください</p>
-
+  </div>
+ </div>
 <!--render "public/shared/links" -->
+</div>

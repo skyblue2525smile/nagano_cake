@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @orders_items = @order.ordered_items
+    @order_details.items = @order.ordered_items
   end
 
   def confirm
@@ -40,7 +40,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-
     current_customer.cart_items.each do |cart_item|
       @ordered_item = OrderDetail.new
       @ordered_item.order_id = @order.id

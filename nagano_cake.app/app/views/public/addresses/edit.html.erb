@@ -1,13 +1,32 @@
-<p style="display: inline-block">郵便番号(ハイフンなし)</p>
-    <%= f.text_field :postal_code %></br>
+<div class="container">
+  <div class = "p-3 text-black">
+    <span class = "bg-light pr-3 pl-3 h5">配送先編集</span>
+  </div>
+  <div class="row">
+　<%= form_with model: @address, url: address_path, method: :patch do |f| %>
+    <table>
+      <div class="col-md-10">
+          <thead>
+              <tr>
+                <th class ="pr-3 pb-3">郵便番号(ハイフンなし)</th>
+                <td class="pb-3"><%= f.text_field :postal_code %></td>
+              </tr>
+              <tr>
+                <th class ="pr-3 pb-3">住所</th>
+                <td class="pb-3"><%= f.text_field :address, size:60 %></td>
+              </tr>
+              <tr>
+                  <th class ="pr-3 pb-3">宛名</th>
+                  <td class="pb-3"><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+              </tr>
+          </thead>
+      </div>
 
-<p style="display: inline-block">住所</p>
-    <%= f.text_field :address %></br>
+      <div class="col-md-2">
+          <%= f.submit "変更内容を保存", class: "btn btn btn-success" %>
+      </div>
 
-<p  style="display: inline-block">宛名</p>
-
-    <%= f.label :'(姓)' %>
-    <%= f.text_field :last_name %>
-
-    <%= f.label :'(名)' %>
-    <%= f.text_field :first_name %></br>
+    </table>
+<% end %>
+  </div>
+</div>

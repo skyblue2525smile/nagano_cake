@@ -1,55 +1,56 @@
-<h4>会員情報編集画面</h4>
+<div class="container">
+  <div class = "p-3 text-black">
+    <span class = "bg-light pr-3 pl-3 h5">会員情報編集画面</span>
+  </div>
 
 <!--bookersのユーザー情報編集画面を参考にする-->
 
-<div class="container">
  <div class="row">
   <div class="col-md-8">
 
 
-   <%= form_with model: @customer, url: customer_session_path, method: :patch do |f| %>
-      <h7 style="display: inline-block">名前</h7><div class="field">
-
-          <%= f.label :'(姓)' %>
-          <%= f.text_field :last_name %>
-
-          <%= f.label :'(名)' %>
-          <%= f.text_field :first_name %></br>
-
-
-      <h7 style="display: inline-block">フリガナ</h7>
-
-          <%= f.label :'(セイ)' %>
-          <%= f.text_field :last_name_kana %><%= f.label :'(メイ)' %><%= f.text_field :first_name_kana %></br>
-
-
-      <h7 style="display: inline-block">郵便番号(ハイフンなし)</h7>
-
-          <%= f.text_field :postal_code %></br>
-
-
-      <h7>住所</h7>
-
-          <%= f.text_field :address %></br>
-
-      <h7>電話番号(ハイフンなし)</h7>
-
-          <%= f.text_field :telephone_number %></br>
-
-
-      <h7>メールアドレス</h7>
-
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %></br>
+    <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+    <table>
+      <thead>
+         <tr>
+           <th class ="pr-3 pb-3">氏名</th>
+           <td class="pb-3"><%= f.text_field :last_name %> &emsp; <%= f.text_field :first_name %></td>
+         </tr>
+         <tr>
+           <th class ="pr-3 pb-3">フリガナ</th>
+           <td class="pb-3"><%= f.text_field :last_name_kana %> &emsp; <%= f.text_field :first_name_kana %></td>
+         </tr>
+         <tr>
+           <th class ="pr-3 pb-3">郵便番号(ハイフンなし)</th>
+           <td class="pb-3"><%= f.text_field :postal_code %></td>
+         </tr>
+         <tr>
+           <th class ="pr-3 pb-3">住所</th>
+           <td class="pb-3"><%= f.text_field :address, size:60 %></td>
+         </tr>
+         <tr>
+           <th class ="pr-3 pb-3">電話番号</th>
+           <td class="pb-3"><%= f.text_field :telephone_number %></td>
+         </tr>
+         <tr>
+           <th class ="pr-3 pb-3">メールアドレス</th>
+           <td class="pb-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+         </tr>
+      </thead>
+    </table>
+  </div>
+ </div>
 
 
+     <div class="row d-flex justify-content-center">
 
-     <br/>
+        <span class="pr-5"><%= f.submit "編集内容を保存", class: "btn btn btn-success" %></span>
 
-     <div style="display: inline-block"><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
-     <%= link_to "退会する", customers_confirm_path, class: "btn btn-sm btn-danger" %></div>
+        <span class="pr-5"><%= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger" %></span>
+
+     </div>
 
    <% end %>
 
-  </div>
+
  </div>
-</div>
