@@ -1,33 +1,53 @@
-<h2>ログイン</h2>
-
-<h4>会員の方はこちらからログイン</h4>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class = "container">
+  <div class = "p-3 text-black">
+      <span class = "bg-light pr-3 pl-3 h5"><b>ログイン</b></span>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class = "pt-3 pl-5 text-black">
+      <span class = "bg-light pr-3 pl-3 h6"><b>会員の方はこちらからログイン</b></span>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class:"btn btn-primary" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="d-flex justify-content-center m-3">
+        <table>
+          <tr>
+            <th class="pr-5 pb-3"><%= f.label :メールアドレス %></th>
+            <td class="pb-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", size:60 %></td>
+          </tr>
+
+          <tr>
+            <th class="pr-5 pb-4"><%= f.label :パスワード %></th>
+            <td class="pb-4"><%= f.password_field :password, autocomplete: "current-password", size:60 %></td>
+          </tr>
+
+      <!--< if devise_mapping.rememberable? %>-- ログイン情報保存機能-->
+
+      <!--    <= f.check_box :remember_me %>-->
+      <!--    <= f.label :remember_me %>-->
+
+      <!--< end %>-->
+          <tr>
+            <th class="pr-5 pb-3"></th>
+            <td class="pb-3"><%= f.submit "ログイン", class:"btn btn-primary btn-block w-25 mt-2" %></td>
+          </tr>
+        </table>
+
+      </div>
+
+    <% end %>
+
+  <div class = "pt-3 pl-5 text-black">
+    <span class = "bg-light pr-3 pl-3 h6"><b>会員登録がお済みでない方</b></span></br>
+    <span class="ml-5">
+    <%= link_to "こちら", new_customer_registration_path %> &emsp;から新規登録を行ってください。
+    </span>
   </div>
-<% end %>
-
-</br><h5>会員登録がお済みでない方</h5>
-
-<p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
 
 
-<%= render "public/shared/links" %>
+
+
+
+  <!--<= render "public/shared/links" %>-->
+
+</div>

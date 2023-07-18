@@ -1,6 +1,6 @@
 <div class="container">
   <div class = "p-3 text-black">
-    <span class = "bg-light pr-3 pl-3 h5">新規会員登録</span>
+    <span class = "bg-light pr-3 pl-3 h5"><b>新規会員登録</b></span>
   </div>
  <div class="row">
   <div class="col-md-8">
@@ -12,14 +12,14 @@
          <tr>
            <th class ="pr-3 pb-3">氏名</th>
            <td class="pb-3">
-               '(姓)'<%= f.text_field :last_name %> &emsp; '(名)'<%= f.text_field :first_name %>
+               (姓)<%= f.text_field :last_name %> &emsp; (名)<%= f.text_field :first_name %>
            </td>
          </tr>
 
          <tr>
            <th class ="pr-3 pb-3">フリガナ</th>
            <td class="pb-3">
-               '(セイ)'<%= f.text_field :last_name_kana %> &emsp; '(メイ)'<%= f.text_field :first_name_kana %>
+               (セイ)<%= f.text_field :last_name_kana %> &emsp; (メイ)<%= f.text_field :first_name_kana %>
            </td>
          </tr>
 
@@ -46,22 +46,22 @@
          <tr>
            <th class ="pr-3 pb-3">パスワード(6文字以上)</th>
            <td class="pb-3">
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %>
+              <!--< if @minimum_password_length %>-->
+              <!--  <em>(< @minimum_password_length %> characters minimum)</em>-->
+              <!--< end %>-->
               <%= f.password_field :password, autocomplete: "new-password" %>
            </td>
          </tr>
 
-         <tr>
-           <th class ="pr-3 pb-3"></th>
-           <td class="pb-3">
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %>
-              <%= f.password_field :password, autocomplete: "new-password" %>
-           </td>
-         </tr>
+         <!--<tr>-->
+         <!--  <th class ="pr-3 pb-3"></th>-->
+         <!--  <td class="pb-3">-->
+         <!--     < if @minimum_password_length %>-->
+         <!--       <em>(<= @minimum_password_length %> characters minimum)</em>-->
+         <!--     < end %>-->
+         <!--     <= f.password_field :password, autocomplete: "new-password" %>-->
+         <!--  </td>-->
+         <!--</tr>-->
 
          <tr>
            <th class ="pr-3 pb-3">パスワード(確認用)</th>
@@ -70,18 +70,29 @@
            </td>
          </tr>
 
+         <tr>
+           <th class ="pr-3 pb-3"></th>
+           <td class="pb-3"> <%= f.submit "新規登録", class:"btn btn-success btn-block w-50" %></td>
+         </tr>
+
       </thead>
     </table>
 
 
-  <div class="actions">
-    <%= f.submit "新規登録", class:"btn btn-success" %>
-  </div>
 <% end %>
 
+ <div class="row">
+    <div class = "p-3 text-black">
+      <span class = "bg-light pr-3 h5"><b>既に登録済みの方</b></span>
+    </div>
+  </div>
 
-<h4>既に登録済みの方</h4>
-<p><%= link_to "こちら", new_customer_session_path %>からログインしてください</p>
+ <div class="row">
+
+  <span class="pl-5"><%= link_to "こちら", new_customer_session_path %>からログインしてください</span>
+
+ </div>
+
   </div>
  </div>
 <!--render "public/shared/links" -->
