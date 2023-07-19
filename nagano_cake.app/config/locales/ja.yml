@@ -8,3 +8,15 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+  enums:
+    order:
+      item_status:
+        sale: 販売中
+        discontinued: 販売停止中
+
+  enums:
+    customer:
+      customer_status:
+        valid: 有効
+        withdrawal: 退会

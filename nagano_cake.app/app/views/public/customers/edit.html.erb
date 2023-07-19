@@ -5,9 +5,6 @@
 
 <!--bookersのユーザー情報編集画面を参考にする-->
 
- <div class="row">
-  <div class="col-md-8">
-
 
     <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
     <table>
@@ -36,19 +33,29 @@
            <th class ="pr-3 pb-3">メールアドレス</th>
            <td class="pb-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
          </tr>
+         <tr>
+            <th></th>
+            <td class="pr-5 pl-5">
+              <div class="btn-toolbar">
+                  <%= f.submit "編集内容を保存", class: "btn btn btn-success btn-block w-50 pr-5 pl-5" %>
+                  &emsp; &emsp;
+                  <%= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger pr-5 pl-5" %>
+              </div>
+            </td>
+          </tr>
       </thead>
     </table>
-  </div>
- </div>
 
 
-     <div class="row d-flex justify-content-center">
 
-        <span class="pr-5"><%= f.submit "編集内容を保存", class: "btn btn btn-success" %></span>
 
-        <span class="pr-5"><%= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger" %></span>
+     <!--<div class="row d-flex justify-content-center">-->
 
-     </div>
+     <!--   <span class="pr-5"><= f.submit "編集内容を保存", class: "btn btn btn-success" %></span>-->
+
+     <!--   <span class="pr-5"><= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger" %></span>-->
+
+     <!--</div>-->
 
    <% end %>
 
