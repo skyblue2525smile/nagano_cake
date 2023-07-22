@@ -19,7 +19,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection { delete 'destroy_all'}
     end
-    resources :address, only: [:create, :index, :edit, :update, :destroy]
+    resources :address, only: [:new, :create, :index, :edit, :update, :destroy]
     get '/customers/my_page' => "customers#show"
     get '/customers/confirm' => "customers#confirm"
     patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"

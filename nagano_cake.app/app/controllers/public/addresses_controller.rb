@@ -1,4 +1,7 @@
 class Public::AddressesController < ApplicationController
+  def new
+    @address = Address.new
+  end
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id

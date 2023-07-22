@@ -11,21 +11,21 @@
           <tr>
             <th>注文日</th>
             <td>
-              <%= @order.created_at %>
+              <%= @order_detail.created_at %>
             </td>
           </tr>
           <tr>
             <th>配送先</th>
             <td>
-              <%= @order.post_code %>
-              <%= @order.address %>
-              <%= @order.mailling_label %>
+              <%= @order_detail.order.post_code %>
+              <%= @order_detail.order.address %>
+              <%= @order_detail.order.mailling_label %>
             </td>
           </tr>
           <tr>
             <th>支払い方法</th>
             <td>
-              <%= @order.method_of_payment %>
+              <%= @order_detail.order.method_of_payment %>
             </td>
           </tr>
           </thead>
@@ -40,15 +40,15 @@
           <thead class="thead-light">
             <tr>
               <th>商品合計</th>
-              <td><%= @order.total_amount.to_s(:delimited) %></td>
+              <td><%= @order_detail.order.total_amount.to_s(:delimited) %></td>
             </tr>
             <tr>
               <th>配送料</th>
-              <td><%= @order.postage %></td>
+              <td><%= @order_detail.order.postage %></td>
             </tr>
             <tr>
               <th><b>ご請求金額</b></th>
-              <td><%= (@order.total_amount + @order.postage).to_s(:delimited) %></td>
+              <td><%= (@order_detail.order.total_amount + @order_detail.order.postage).to_s(:delimited) %></td>
             </tr>
           </thead>
         </tbody>
