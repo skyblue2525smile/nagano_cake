@@ -3,7 +3,7 @@
     <span class = "bg-light pr-3 pl-3 h5">マイページ</span>
   </div>
 
-  <h4 style="display: inline-block">登録情報</h4>　<%= link_to "編集する", customers_edit_information_path, class: "m-2 btn btn-success" %>
+  <h5 style="display: inline-block"><b>登録情報</b></h5>　<%= link_to "編集する", customers_edit_information_path, class: "m-2 btn btn-success mr-2 ml-2" %>
 
 
   <div class="col-md-8">
@@ -39,6 +39,13 @@
   </table>
   </div>
 
-  <h4 style="display: inline-block">注文履歴</h4>　<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+  <div class="pb-1">
+    <h5 style="display: inline-block"><b>配送先</b></h5> <%= link_to "一覧を見る", address_index_path, class: "btn btn-primary ml-5" %>
+  </div>
+  </br>
+  <div class="pt-1">
+    <h5 style="display: inline-block"><b>注文履歴</b></h5>　<%= link_to "一覧を見る", orders_path(current_customer.orders), class: "btn btn-primary ml-3" %>
+  </div>
+
 
 </div>

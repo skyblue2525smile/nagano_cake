@@ -4,4 +4,5 @@ class Order < ApplicationRecord
 
   enum method_of_payment: { credit_card: 0, transfer: 1}
   enum item_status: { sale: 0, discontinued: 1}
+  enum order_status: { payment_waiting: 0, payment_confirmation: 1, in_production: 2, preparing_delivery: 3, delivered: 4 }
 end

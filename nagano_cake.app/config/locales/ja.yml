@@ -4,19 +4,26 @@ ja:
       method_of_payment:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-
+      item_status:
+        sale: 販売中
+        discontinued: 販売停止中
+      order_status:
+        payment_waiting: "入金待ち"
+        payment_confirmation: "入金確認"
+        in_production: "製作中"
+        preparing_delivery: "発送準備中"
+        delivered: "発送済み"
+    customer:
+      customer_status:
+        effective: 有効
+        withdrawal: 退会
+    order_detail:
+      making_status:
+        production_not_possible: "製作不可"
+        production_pending: "製作待ち"
+        in_production: "製作中"
+        production_complete: "製作完了"
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
 
-  enums:
-    order:
-      item_status:
-        sale: 販売中
-        discontinued: 販売停止中
-
-  enums:
-    customer:
-      customer_status:
-        valid: 有効
-        withdrawal: 退会

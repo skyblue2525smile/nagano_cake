@@ -20,9 +20,23 @@ class Public::OrdersController < ApplicationController
         @order.mailling_label = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
         @address = Address.find(params[:order][:address_id])
-        @order.address_post_code = @address.post_code
-        @order.adddress_address = @address.address
-        @order.maillng_label = @address.name
+        @order.post_code = @address.postal_code
+        @order.address = @address.address
+        @order.mailling_label = @address.address_name
+    elsif params[:order][:address_option] == "2"
+        @address = Address.new
+        @address.customer_id = current_customer.id
+        @address.postal_code = params[:order][:post_code]
+        @address.address = params[:order][:address]
+        @address.address_name = params[:order][:mailling_label]
+        # orderのform withでcofirmに送っているparamsのカラムのデータをparams[:order][:orderのカラム名]でとってきている
+
+        @address.save
+
+        @order.post_code = @address.postal_code
+        @order.address = @address.address
+        @order.mailling_label = @address.address_name
+        #上記で行っていること；アドレスを新規作成して、それを新規orderの配送先に指定している
     else
       render 'new'
     end
