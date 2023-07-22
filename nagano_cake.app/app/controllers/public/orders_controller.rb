@@ -8,8 +8,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order_detail = OrderDetail.find(params[:id])
-    @order_details.items = @order.ordered_items
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def confirm

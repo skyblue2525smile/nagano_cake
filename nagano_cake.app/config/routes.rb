@@ -11,15 +11,14 @@ devise_for :customers, skip: [:passwords], controllers: {
     root to: 'homes#top'
     get "/homes/about" => "homes#about", as: "about"
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :index, :show] do
+    resources :orders, only: [:new, :index, :show ,:create] do
      collection { post 'confirm'}
      collection { get 'thanks'}
-     collection { post 'create'}
     end
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection { delete 'destroy_all'}
     end
-    resources :address, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     get '/customers/my_page' => "customers#show"
     get '/customers/confirm' => "customers#confirm"
     patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"

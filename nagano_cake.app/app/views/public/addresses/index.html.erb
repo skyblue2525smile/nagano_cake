@@ -4,7 +4,7 @@
   </div>
   <div class="row">
 
-　<%= form_with model: @address, url: address_index_path, method: :post do |f| %>
+　<%= form_with model: @address, url: addresses_path, method: :post do |f| %>
     <table>
       <div class="col-md-10">
           <thead>
@@ -18,15 +18,16 @@
               </tr>
               <tr>
                   <th class ="pr-3 pb-3">宛名</th>
-                  <td class="pb-3"><%= f.text_field :mailling_label, :placeholder => "山田花子" %></td>
+                  <td class="pb-3"><%= f.text_field :address_name, :placeholder => "山田花子" %></td>
               </tr>
           </thead>
       </div>
+    </table>
 
       <div class="col-md-2">
           <%= f.submit "新規登録", class: "btn btn btn-success" %>
       </div>
-    </table>
+
  <% end %>
  </div>
 
@@ -51,7 +52,7 @@
             <%= address.address %>
           </td>
           <td class="p-3">
-            <%= address.mailling_label %>
+            <%= address.address_name %>
           </td>
           <td class="p-3">
             <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
