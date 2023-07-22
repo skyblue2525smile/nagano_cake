@@ -14,6 +14,7 @@
               <%= @order.created_at %>
             </td>
           </tr>
+
           <tr>
             <th>配送先</th>
             <td>
@@ -22,11 +23,17 @@
               <%= @order.mailling_label %>
             </td>
           </tr>
+
           <tr>
             <th>支払い方法</th>
             <td>
               <%= @order.method_of_payment_i18n %>
             </td>
+          </tr>
+
+          <tr>
+            <th>ステータス</th>
+            <td></td>
           </tr>
           </thead>
         </tbody>
@@ -59,28 +66,25 @@
     <div class="col-md-8">
       <h6><b>注文内容</b></h6>
       <table class="table table-bordered">
-        <tbody>
           <thead class="thead-light">
-            <% @order_details.each do |order_detail| %>
             <tr>
               <th>商品</th>
-              <td><%= order_detail.item.name %></td>
-            </tr>
-            <tr>
               <th>単価（税込み）</th>
-              <td><%= order_detail.purchase_price %></td>
-            </tr>
-            <tr>
               <th>個数</th>
-              <td><%= order_detail.quantity %></td>
-            </tr>
-            <tr>
               <th>小計</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.purchase_price %></td>
+              <td><%= order_detail.quantity %></td>
               <td><%= (order_detail.purchase_price * order_detail.quantity ) %></td>
             </tr>
             <% end %>
-          </thead>
-        </tbody>
+          </tbody>
       </table>
     </div>
   </div>
