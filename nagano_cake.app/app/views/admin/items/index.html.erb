@@ -38,7 +38,13 @@
             <td class="p-3"><%= link_to item.name, admin_item_path(item.id) %></td>
             <td class="p-3"><%= item.price %></td>
             <!--<td class="p-3"><= item.genre %></td>-->
-            <!--<td class="p-3"><= item.status %></td>-->
+            <td class="p-3">
+              <% if item.is_active %>
+                <%= "販売中" %>
+              <% else %>
+                <%= "販売停止中" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
 
