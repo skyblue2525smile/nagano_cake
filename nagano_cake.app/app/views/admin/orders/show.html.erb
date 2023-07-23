@@ -6,23 +6,28 @@
 <table>
   <thead>
     <tr>
-      <th class="p-2">購入者</th>
+      <th class="p-2"><b>購入者</b></th>
       <td class="p-2"><%= customer_id.name %></td>
     </tr>
 
     <tr>
-      <th class="p-2">注文日</th>
+      <th class="p-2"><b>注文日</b></th>
       <td class="p-2"><%= customer_id.order_date %></td>
     </tr>
 
     <tr>
-      <th class="p-2">配送先</th>
+      <th class="p-2"><b>配送先</b></th>
       <td class="p-2"><%= post_code + address + mailling_label %>></td>
     </tr>
 
     <tr>
-      <th class="p-2">支払方法</th>
+      <th class="p-2"><b>支払方法</b></th>
       <td class="p-2"><%= method_of_payment %></td>
+    </tr>
+
+    <tr>
+      <th class="p-2"><b>ステータス</b></th>
+      <td class="p-2"><%= %><%= link_to "更新", _path, class: "btn btn-success" %></td>
     </tr>
   </thead>
 </table>
@@ -30,11 +35,11 @@
 <table class="table table-bordered m-2">
   <thead class="thead-light">
     <tr>
-      <th class="p-2">商品名</th>
-      <th class="p-2">単価(税込)</th>
-      <th class="p-2">数量</th>
-      <th class="p-2">小計</th>
-      <th colspan="4"></th>
+      <th class="p-2"><b>商品名</b></th>
+      <th class="p-2"><b>単価(税込)</b></th>
+      <th class="p-2"><b>数量</b></th>
+      <th class="p-2"><b>小計</b></th>
+      <th class="p-2"><b>製作ステータス</b></th>
     </tr>
   </thead>
 
@@ -45,6 +50,7 @@
       <td class="p-2"><%= order.item.with_tax_price %></td>
       <td class="p-2"><%= order.amount %></td>
       <td class="p-2"><%= (order.item.price * 1.1).floor * order.amount %></td>
+      <td class="p-2"><=　%><%= link_to "更新", _path, class: "btn btn-success" %></td>
     </tr>
     <% end %>
   </tbody>
@@ -53,17 +59,17 @@
 <table>
   <thead>
     <tr>
-      <th class="p-2">商品合計</th>
+      <th class="p-2"><b>商品合計</b></th>
       <th class="p-2"><%= @total_items_price.to_s(:delimited) %>円</th>
     </tr>
 
     <tr>
-    <td class="p-2">送料</td>
+    <td class="p-2"><b>送料</b></td>
     <td class="p-2"><%= @order.postage.to_s(:delimited) %>円</td>
     </tr>
 
     <tr>
-      <td class="p-2">請求金額合計</td>
+      <td class="p-2"><b>請求金額合計</b></td>
       <td class="p-2"><%= @order.total_amount.to_s(:delimited) %>円</td>
     </tr>
   </thead>

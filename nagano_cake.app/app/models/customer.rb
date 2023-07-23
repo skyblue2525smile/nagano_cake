@@ -8,7 +8,7 @@ has_many :cart_items, dependent: :destroy
 has_many :orders, dependent: :destroy
 has_many :addresses, dependent: :destroy
 
-# validates :is_active, inclusion: {in: [true, false]}
+validates :is_active, inclusion: {in: [true, false]}
 
   def active_for_authenthication?
     super && !@customer.is_deleted
