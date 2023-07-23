@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.string "postal_code", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -68,8 +67,6 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
-    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -102,6 +99,8 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.string "name", null: false
     t.string "introduction", null: false
     t.integer "price", null: false
+    t.integer "genre_id", null: false
+    t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -111,10 +110,9 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.integer "item_id", null: false
     t.integer "quantity", null: false
     t.integer "purchase_price", null: false
+    t.integer "making_status", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_details_on_item_id"
-    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -125,17 +123,11 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.integer "postage", null: false
     t.integer "total_amount", null: false
     t.integer "method_of_payment", null: false
+    t.integer "order_status", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "customers"
-  add_foreign_key "cart_items", "customers"
-  add_foreign_key "cart_items", "items"
-  add_foreign_key "order_details", "items"
-  add_foreign_key "order_details", "orders"
-  add_foreign_key "orders", "customers"
 end
