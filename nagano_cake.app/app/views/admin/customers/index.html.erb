@@ -10,7 +10,7 @@
           <th class = "p-2">会員ID</th>
           <th class = "p-2">氏名</th>
           <th class = "p-2">メールアドレス</th>
-          <th colspan = "4"></th>
+          <th class = "p-2">ステータス</th>
         </tr>
       </thead>
 
@@ -21,6 +21,7 @@
           <td class = "p-3"><%= customer.id %></td>
           <td class = "p-3"><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id)%></td>
           <td class = "p-3"><%= customer.email %></td>
+          <td class = "p-3"></td>
         </tr>
         <% end %>
 

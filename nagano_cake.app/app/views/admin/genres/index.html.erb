@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 pl-5">
+      <div class = "p-3 text-black">
+        <span class = "bg-light pr-3 pl-3 h5">ジャンル一覧・追加</span>
+      </div>
+    </div>
+  </div>
+
+  <%= form_with model: @genre, url: admin_genres_path do |f| %>
+  <table class="m-2">
+    <td><b><%= f.label :ジャンル名, class: "mr-3" %></b></td>
+    <td><%= f.text_field :name, :placeholder => "ジャンル名", class: "mr-5" %></td>
+    <td><%= f.submit "新規登録", class: "btn btn-success pr-3 pl-3" %></td>
+  </table>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6 pt-3">
+      <table class="border=1 mr-2 ml-2">
+        <thead class="bg-light">
+          <tr>
+            <th class="pt-2 pr-5 pl-5 pb-2"><b>ジャンル</b></th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @genres.each do |gerne| %>
+          <tr>
+            <td class="pt-3 pr-5 pl-5 pb-3">
+              <%= gerne.name %>
+            </td>
+            <td class="pt-2 pr-5 pl-5 pb-2">
+              <%= link_to "編集する", edit_admin_genre_path(gerne.id), class: "btn btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@
 
   <div class="row">
     <table class="table table-bordered">
-      <tbody>
+
         <thead class="thead-light">
         <% @orders.each do |order| %>
           <tr>
@@ -20,7 +20,9 @@
             <th>ステータス</th>
             <th>注文詳細</th>
           </tr>
+        </thead>
 
+        <tbody>
           <tr>
             <td><%= order.created_at %></td>
             <td><%= order.address %></td>
@@ -34,8 +36,7 @@
             <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
         <% end %>
-        </thead>
-      </tbody>
+        </tbody>
     </table>
   </div>
 </div>

@@ -36,6 +36,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     root to: 'homes#top'
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :show, :create, :edit, :update]
     get 'orders/show/:id' => "orders#show"
 
  end
