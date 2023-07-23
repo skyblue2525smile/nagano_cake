@@ -23,7 +23,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     get '/customers/confirm' => "customers#confirm"
     patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"
     get '/customers/edit/information' => "customers#edit"
-    patch '/customers/information' => "customers#update"
+    patch '/customers/information/:id' => "customers#update"
 
  end
 
@@ -37,8 +37,8 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :show, :create, :edit, :update]
-    get 'orders/show/:id' => "orders#show"
-
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
  end
 
 

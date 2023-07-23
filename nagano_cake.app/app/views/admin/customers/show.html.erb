@@ -46,7 +46,13 @@
 
             <tr>
               <th class="pr-4 pb-2">会員ステータス</th>
-              <td class="pr-4 pb-2"><= @customer. %></td>
+              <td class="pr-4 pb-2">
+                <%= if @customer.is_deleted %>
+                  <%= "無効" %>
+                <% else %>
+                  <%= "有効" %>
+                <% end %>
+                </td>
             </tr>
 
         </tbody>
