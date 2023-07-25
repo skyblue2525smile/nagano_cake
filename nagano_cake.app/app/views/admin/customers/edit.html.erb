@@ -55,13 +55,18 @@
             </tr>
 
             <tr>
-              <th class="pr-4">メールアドレス</th>
+              <th class="pr-4 pb-2">メールアドレス</th>
               <td class="pr-4 pb-2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
             </tr>
 
             <tr>
-              <th class="pr-4">会員ステータス</th>
-              <td class="pr-4 pb-2"><%=  %></td>
+              <th class="pr-4 pb-2">会員ステータス</th>
+              <td class="pr-4 pb-2">
+                <%= f.radio_button :is_deleted, "false" %>
+                <%= f.label :customer_status, "有効" %>
+                <%= f.radio_button :is_deleted, "true" %>
+                <%= f.label :customer_status, "退会" %>
+              </td>
             </tr>
 
         </thead>
