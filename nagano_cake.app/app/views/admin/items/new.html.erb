@@ -33,16 +33,31 @@
               商品説明
             </th>
             <td class="pr-4 pb-2">
-              <%= f.text_area :introduction, rows:3, autofocus: true, :placeholder => "ここに説明文を記述します" %>
+              <%= f.text_area :introduction, rows:3, autofocus: true, id:"inputIntroduction", :placeholder => "ここに説明文を記述します" %>
             </td>
           </tr>
 
           <tr>
-            <th class="pr-4 pb-2">
-              税込価格
-            </th>
+            <th class="pr-4 pb-2">ジャンル</th>
             <td class="pr-4 pb-2">
-              <%= f.text_field :price, autofocus: true, id:"inputIntroduction" %>円
+              <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択して下さい", :class => "form-control-sm"} %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="pr-4 pb-2">税込価格</th>
+            <td class="pr-4 pb-2">
+              <%= f.text_field :price, autofocus: true %>円
+            </td>
+          </tr>
+
+          <tr>
+            <th class="pr-4 pb-2">販売ステータス</th>
+            <td class="pr-4 pb-2">
+                <%= f.radio_button :is_active, "true" %>
+                <%= f.label :item_status, "販売中" %>
+                <%= f.radio_button :is_active, "false" %>
+                <%= f.label :item_status, "販売停止中" %>
             </td>
           </tr>
 

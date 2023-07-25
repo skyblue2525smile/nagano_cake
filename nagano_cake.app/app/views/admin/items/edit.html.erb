@@ -3,35 +3,55 @@
     <span class = "bg-light pr-3 pl-3 h5">商品編集</span>
   </div>
 
-  <div class = mx-auto style="width: 400px;">
-   <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+  <div class="row">
+    <div class="col-md-7">
+    <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
-      <div class = "mb-3">
-      <h7 class = "p-3">商品画像</h7>
-      <%= f.file_field :image, accept: "image/*" %>
+      <table>
+
+        <tr>
+          <th class="p-2">商品画像</th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+
+        <tr>
+            <th class="p-2">商品名</th>
+            <td><%= f.text_field :name, autofocus: true, :placeholder => "商品名" %></td>
+        </tr>
+
+        <tr>
+            <th class="p-2">商品説明</th>
+            <td><%= f.text_area :introduction, rows:3, autofocus: true, id:"inputIntroduction", :placeholder => "ここに説明文を記述します" %></td>
+        </tr>
+
+         <tr>
+            <th class="p-2">ジャンル</th>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
+         </tr>
+
+         <tr>
+            <th class="p-2">税込価格</th>
+            <td><%= f.text_field :price, autofocus: true %>円</td>
+         </tr>
+
+         <tr>
+            <th class="p-2">販売ステータス</th>
+            <td>
+              <%= f.radio_button :is_active, "true" %>
+              <%= f.label :item_status, "販売中" %>
+              <%= f.radio_button :is_active, "false" %>
+              <%= f.label :item_status, "販売停止中" %>
+            </td>
+         </tr>
+
+      </table>
+
+      <div class="d-flex justify-content-center mr-3">
+        <%= f.submit "変更を保存", class: "btn btn-success pr-3 pl-3" %>
       </div>
-
-      <div class = "mb-3">
-      <h7 class = "p-4">商品名</h7>
-
-        <%= f.text_field :name, autofocus: true, :placeholder => "商品名" %>
-      </div>
-
-       <div class = "mb-3">
-       <h7 class = "p-3">商品説明</h7>
-
-        <%= f.text_area :introduction, rows:3, autofocus: true, :placeholder => "ここに説明文を記述します" %>
-       </div>
-
-      <div class = "mb-3">
-      <h7 class = "p-3">税込価格</h7>
-
-      <%= f.text_field :price, autofocus: true, id:"inputIntroduction" %>円
-      </div>
-
-      <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
 
     <% end %>
+    </div>
   </div>
 
 </div>
