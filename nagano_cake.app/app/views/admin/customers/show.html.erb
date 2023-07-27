@@ -48,9 +48,9 @@
               <th class="pr-4 pb-2">会員ステータス</th>
               <td class="pr-4 pb-2">
                 <% if @customer.is_deleted %>
-                  <span class=text-success>有効</span>
-                <% else %>
                   <span class=text-secondary>退会</span>
+                <% else %>
+                  <span class=text-success>有効</span>
                 <% end %>
               </td>
             </tr>

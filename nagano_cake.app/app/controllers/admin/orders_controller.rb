@@ -7,7 +7,8 @@ class Admin::OrdersController < ApplicationController
   def show
     @orders = Order.find(params[:id])
     @order = OrderDetail.find(params[:id])
-    @order.total_amount = @cart_items.cart_items_total_price(@cart_items)
+    @order.total_amount = @cart_items.self.cart_items_total_price(cart_items)
+    # 各顧客の注文ごとの請求金額合計の算出用コードがきちんと機能していない
   end
 
   def update

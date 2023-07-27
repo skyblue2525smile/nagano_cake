@@ -62,11 +62,14 @@
             <tr>
               <th class="pr-4 pb-2">会員ステータス</th>
               <td class="pr-4 pb-2">
-                <%= f.radio_button :is_deleted, "false" %>
-                <%= f.label :customer_status, "有効" %>
                 <%= f.radio_button :is_deleted, "true" %>
                 <%= f.label :customer_status, "退会" %>
+                <%= f.radio_button :is_deleted, "false" %>
+                <%= f.label :customer_status, "有効" %>
+
+                <%= f.hidden_field :is_deleted, :value => @customer.is_deleted %>
               </td>
+              <!--会員ステータスの変更が反映されなかった；何故？-->
             </tr>
 
         </thead>
