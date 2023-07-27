@@ -22,12 +22,15 @@
 
     <tr>
       <th class="p-2"><b>支払方法</b></th>
-      <td class="p-2"><%= method_of_payment %></td>
+      <td class="p-2"><%= method_of_payment_i18n %></td>
     </tr>
 
     <tr>
-      <th class="p-2"><b>ステータス</b></th>
-      <td class="p-2"><%= @orders.order_status %><%= link_to "更新", admin_order_path(@orders.id), class: "btn btn-success" %></td>
+      <th class="p-2"><b>注文ステータス</b></th>
+      <td class="p-2">
+        <%= @orders.order_status %>
+        <%= link_to "更新", admin_order_path(@orders.id), class: "btn btn-success" %>
+      </td>
     </tr>
   </thead>
 </table>
@@ -50,7 +53,10 @@
       <td class="p-2"><%= order.item.with_tax_price %></td>
       <td class="p-2"><%= order.amount %></td>
       <td class="p-2"><%= (order.item.price * 1.1).floor * order.amount %></td>
-      <td class="p-2"><%= @order.making_status %><%= link_to "更新", admin_order_detail_path(@order.id), class: "btn btn-success" %></td>
+      <td class="p-2">
+      <%= @order.making_status %>
+      <%= link_to "更新", admin_order_detail_path(@order.id), class: "btn btn-success" %>
+      </td>
     </tr>
     <% end %>
   </tbody>

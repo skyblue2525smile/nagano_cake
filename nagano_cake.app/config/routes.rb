@@ -19,11 +19,12 @@ devise_for :customers, skip: [:passwords], controllers: {
       collection { delete 'destroy_all'}
     end
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-    get '/customers/my_page' => "customers#show"
+    resources :customers, only: [:show, :edit, :update]
+    # get '/customers/my_page' => "customers#show"
     get '/customers/confirm' => "customers#confirm"
     patch '/customers/:id/withdrawal' => "customers#withdrawal", as: "withdrawal"
-    get '/customers/edit/information' => "customers#edit"
-    patch '/customers/information/:id' => "customers#update"
+    # get '/customers/edit/information' => "customers#edit"
+    # patch '/customers/information/:id' => "customers#update"
 
  end
 
@@ -37,7 +38,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :show, :create, :edit, :update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index ,:show, :update]
     resources :order_details, only: [:update]
  end
 

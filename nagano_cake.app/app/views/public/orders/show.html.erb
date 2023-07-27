@@ -16,10 +16,10 @@
           </tr>
 
           <tr>
-            <th>配送先</th>
+            <th class="p-3">配送先</th>
             <td>
-              <%= @order.post_code %>
-              <%= @order.address %>
+              〒<%= @order.post_code %></br>
+              <%= @order.address %></br>
               <%= @order.mailling_label %>
             </td>
           </tr>
