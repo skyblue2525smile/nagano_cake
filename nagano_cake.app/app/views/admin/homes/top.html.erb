@@ -18,7 +18,7 @@
         <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to (l order.created_at), admin_orders_path %></td>
+            <td><%= link_to (l order.created_at), admin_customer_orders_path(order.customer.id) %></td>
             <td><%= order.customer.last_name + order.customer.first_name %></td>
             <td>
               <% @sum = 0 %>

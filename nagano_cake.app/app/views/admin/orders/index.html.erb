@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-5">
       <div class = "p-3 text-black">
-        <span class = "bg-light pr-3 pl-3 h5"><%= @orders.customer.last_name + @orders.customer.first_name %>さんの注文履歴</span>
+        <span class = "bg-light pr-3 pl-3 h5"><%= @customer.last_name + @customer.first_name %>さんの注文履歴</span>
       </div>
     </div>
   </div>
@@ -20,11 +20,11 @@
       <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to (l order.created_at), admin_order_path(order.id) %></td>
-          <td><= order.order_details.sum(:amount) %></td>
+          <td><%= link_to (l order.created_at), admin_customer_order_path(order.customer.id, order) %></td>
+          <td><%= order.order_details.sum(:quantity) %></td>
           <td><%= order.order_status_i18n %></td>
         </tr>
-        <% end %>
+      <% end %>
       </tbody>
     </table>
     <%= paginate @orders %>
