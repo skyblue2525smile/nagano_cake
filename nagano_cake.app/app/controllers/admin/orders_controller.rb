@@ -1,12 +1,13 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.page(params[:page])
-    @customer = @orders.customer.name
+    # @orders = Order.page(params[:page])
+    @orders = current_customer.orders
   end
 
   def show
     @orders = Order.find(params[:id])
     @order = OrderDetail.find(params[:id])
+    @customer = Customer.find(params[:id])
     @order.total_amount = @cart_items.self.cart_items_total_price(cart_items)
     # 各顧客の注文ごとの請求金額合計の算出用コードがきちんと機能していない
   end

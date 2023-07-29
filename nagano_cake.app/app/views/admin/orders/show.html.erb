@@ -7,28 +7,28 @@
   <thead>
     <tr>
       <th class="p-2"><b>購入者</b></th>
-      <td class="p-2"><%= customer_id.name %></td>
+      <td class="p-2"><%= link_to @customer.name, admin_orders_path %></td>
     </tr>
 
     <tr>
       <th class="p-2"><b>注文日</b></th>
-      <td class="p-2"><%= l customer_id.order_date %></td>
+      <td class="p-2"><%= l @customer.order_date %></td>
     </tr>
 
     <tr>
       <th class="p-2"><b>配送先</b></th>
-      <td class="p-2"><%= post_code + address + mailling_label %>></td>
+      <td class="p-2"><%= @customer.post_code + @customer.address + @customer.mailling_label %>></td>
     </tr>
 
     <tr>
       <th class="p-2"><b>支払方法</b></th>
-      <td class="p-2"><%= method_of_payment_i18n %></td>
+      <td class="p-2"><%= @customer.method_of_payment_i18n %></td>
     </tr>
 
     <tr>
       <th class="p-2"><b>注文ステータス</b></th>
       <td class="p-2">
-        <%= @orders.order_status %>
+        <%= f.select :order_status, options_from_collection_for_select(Order.all, :order_status, :order_status) %>
         <%= link_to "更新", admin_order_path(@orders.id), class: "btn btn-success" %>
       </td>
     </tr>
@@ -54,7 +54,7 @@
       <td class="p-2"><%= order.amount %></td>
       <td class="p-2"><%= (order.item.price * 1.1).floor * order.amount %></td>
       <td class="p-2">
-      <%= @order.making_status %>
+      <%= f.select :making_status, options_from_collection_for_select(OrderDetail.all, :making_status, :making_status) %>
       <%= link_to "更新", admin_order_detail_path(@order.id), class: "btn btn-success" %>
       </td>
     </tr>
