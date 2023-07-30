@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <h4 class="p-2">商品一覧(全件)</h4>
+    <h4 class="p-2"><b>商品一覧(全<%= @items.count %>件)</b></h4>
   </div>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-3">
         <%= image_tag item.get_profile_image(200, 200) %>
-        <p><%= link_to item.name, item_path(item.id) %></p>
-        <p><%= "￥" + item.price.to_s %></p>
+        <p><b><%= link_to item.name, item_path(item.id) %></b></p>
+        <p><b><%= "￥" + item.price.to_s %></b></p>
       </div>
     <% end %>
   </div>

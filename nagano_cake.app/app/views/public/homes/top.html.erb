@@ -1,21 +1,27 @@
 <div class = "container">
+  <div class="row">
+    <div class="col-md-3">
+      <% @genres.each do |genre| %>
+        <%= genre.name %></br>
+      <% end %>
+    </div>
 
   <!--<div class="item-index-box">-->
 
-    <!-- ジャンル選択のサイドバー -->
-  <!--  <= render "items/genres_sidebar", genres: @genres %>-->
-    <!-- ジャンル選択のサイドバー -->
+     <!--ジャンル選択のサイドバー -->
+  <!--  <%#= render "items/genres_sidebar", genres: @genres %>-->
+     <!--ジャンル選択のサイドバー -->
   <!--  <div class="item-index">-->
   <!--  <h3>商品一覧</h3>-->
   <!--      <table>-->
   <!--        <tbody>-->
   <!--          <tr class="item-box">-->
-  <!--            < @genre.items.each do |item| %>-->
+  <!--            <#% @genre.items.each do |item| %>-->
   <!--              <td class="item">-->
-  <!--                  <= link_to @genre.item.name, item_path(item) do %>-->
-  <!--                  < end %>-->
+  <!--                  <%#= link_to @genre.item.name, item_path(item.id) do %>-->
+  <!--                  <#% end %>-->
   <!--              </td>-->
-  <!--            < end %>-->
+  <!--            <#% end %>-->
   <!--          </tr>-->
   <!--        </tbody>-->
   <!--      </table>-->
@@ -23,13 +29,38 @@
   <!--</div>-->
 
 
-  <div class="p-5">
-    <span>ようこそ、ながのＣＡＫＥへ！</br>
-          このサイトは、ケーキ販売のＥＣサイトになります。</br>
-          会員でない方も商品の閲覧はできますが、</br>
-          購入には会員登録が必要になります。</span>
+
+    <div class="col-md-9 p-5">
+      <span>
+        ようこそ、ながのＣＡＫＥへ！</br>
+        このサイトは、ケーキ販売のＥＣサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </span>
+    </div>
   </div>
 
-    <h3>新着商品</h3>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9 p-5">
+      <h3><b>新着商品</b></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+
+    <% @items.each do |item| %>
+      <div class="col-md-9">
+        <%= image_tag item.get_profile_image(200,200) %>
+        <p><b><%= link_to item.name, item_path(item.id) %></b></p>
+        <p><b><%= "￥" + item.price.to_s %></b></p>
+      </div>
+    <% end %>
+
+      <%= link_to "全ての商品を見る>", items_path %>
+  </div>
 
 </div>
