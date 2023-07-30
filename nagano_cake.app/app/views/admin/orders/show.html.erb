@@ -3,88 +3,95 @@
       <span class = "bg-light pr-3 pl-3 h5">注文履歴詳細</span>
   </div>
 
-<table>
-  <thead>
-    <tr>
-      <th class="p-2"><b>購入者</b></th>
-      <td class="p-2"><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_orders_path(@order.customer.id) %></td>
-    </tr>
+    <table>
+      <thead>
+        <tr>
+          <th class="p-2"><b>購入者</b></th>
+          <td class="p-2"><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_orders_path(@order.customer.id) %></td>
+        </tr>
 
-    <tr>
-      <th class="p-2"><b>注文日</b></th>
-      <td class="p-2"><%= l @order.created_at %></td>
-    </tr>
+        <tr>
+          <th class="p-2"><b>注文日</b></th>
+          <td class="p-2"><%= l @order.created_at %></td>
+        </tr>
 
-    <tr>
-      <th class="p-2"><b>配送先</b></th>
-      <td class="p-2">
-        〒<%= @order.post_code %>
-        <%= @order.address %></br>
-        <%= @order.mailling_label %>
-      </td>
-    </tr>
+        <tr>
+          <th class="p-2"><b>配送先</b></th>
+          <td class="p-2">
+            〒<%= @order.post_code %>
+            <%= @order.address %></br>
+            <%= @order.mailling_label %>
+          </td>
+        </tr>
 
-    <tr>
-      <th class="p-2"><b>支払方法</b></th>
-      <td class="p-2"><%= @order.method_of_payment_i18n %></td>
-    </tr>
+        <tr>
+          <th class="p-2"><b>支払方法</b></th>
+          <td class="p-2"><%= @order.method_of_payment_i18n %></td>
+        </tr>
 
-    <tr>
-      <th class="p-2"><b>注文ステータス</b></th>
-      <td class="p-2">
-        <%= form_with model: Order.new, url: admin_customer_order_path(@order.id), method: :patch do |f| %>
-          <%= f.select :order_status, options_for_select(Order.order_statuses_i18n.values) %>
-          <%= f.submit "更新", class: "btn btn-success" %>
-        <% end %>
-      </td>
-    </tr>
-  </thead>
-</table>
+        <tr>
+          <th class="p-2"><b>注文ステータス</b></th>
+          <td class="p-2">
+            <%= form_with model: Order.new, url: admin_customer_order_path(@order.id), method: :patch do |f| %>
+              <%= f.select :order_status, options_for_select(Order.order_statuses_i18n.values) %>
+              <%= f.submit "更新", class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </thead>
+    </table>
 
-<table class="table table-bordered m-2">
-  <thead class="thead-light">
-    <tr>
-      <th class="p-2"><b>商品名</b></th>
-      <th class="p-2"><b>単価(税込)</b></th>
-      <th class="p-2"><b>数量</b></th>
-      <th class="p-2"><b>小計</b></th>
-      <th class="p-2"><b>製作ステータス</b></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered m-2">
+        <thead class="thead-light">
+          <tr>
+            <th class="p-2"><b>商品名</b></th>
+            <th class="p-2"><b>単価(税込)</b></th>
+            <th class="p-2"><b>数量</b></th>
+            <th class="p-2"><b>小計</b></th>
+            <th class="p-2"><b>製作ステータス</b></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @order_details.each do |order_detail| %>
-    <tr>
-      <td class="p-2"><%= order_detail.item.name %></td>
-      <td class="p-2"><%= order_detail.item.with_tax_price %></td>
-      <td class="p-2"><%= order_detail.quantity %></td>
-      <td class="p-2"><%= (order_detail.item.price * 1.1).floor * order_detail.quantity %></td>
-      <td class="p-2">
-      <%= form_with model: order_detail, url: admin_customer_order_detail_path, method: :patch do |f| %>
-        <%= f.select :making_status, options_for_select(OrderDetail.making_statuses_i18n.values) %>
-        <%= f.submit "更新", class: "btn btn-success" %>
-      <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td class="p-2"><%= order_detail.item.name %></td>
+            <td class="p-2"><%= order_detail.item.with_tax_price %></td>
+            <td class="p-2"><%= order_detail.quantity %></td>
+            <td class="p-2"><%= (order_detail.item.price * 1.1).floor * order_detail.quantity %></td>
+            <td class="p-2">
+            <%= form_with model: order_detail, url: admin_customer_order_detail_path, method: :patch do |f| %>
+              <%= f.select :making_status, options_for_select(OrderDetail.making_statuses_i18n.values) %>
+              <%= f.submit "更新", class: "btn btn-success" %>
+            <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th class="p-2"><b>商品合計</b></th>
-      <th class="p-2"><%= @order.total_amount.to_s(:delimited) %>円</th>
-    </tr>
+    <div class="col-md-4 pt-5">
+      <table>
+        <thead>
+          <tr>
+            <th class="p-2"><b>商品合計</b></th>
+            <th class="p-2"><%= @order.total_amount.to_s(:delimited) %>円</th>
+          </tr>
 
-    <tr>
-    <td class="p-2"><b>送料</b></td>
-    <td class="p-2">800円</td>
-    </tr>
+          <tr>
+          <td class="p-2"><b>送料</b></td>
+          <td class="p-2">800円</td>
+          </tr>
 
-    <tr>
-      <td class="p-2"><b>請求金額合計</b></td>
-      <td class="p-2"><b><%= (@order.total_amount + 800).to_s(:delimited)  %>円</b></td>
-    </tr>
-  </thead>
-</table>
+          <tr>
+            <td class="p-2"><b>請求金額合計</b></td>
+            <td class="p-2"><b><%= (@order.total_amount + 800).to_s(:delimited)  %>円</b></td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
