@@ -10,7 +10,7 @@ class Admin::OrdersController < ApplicationController
     #Orderモデルから特定のorderの情報を取りだし、それに紐づくorder_detailsのデータをとってくる
     @order = Order.find(params[:id])
     @order.total_amount =  @order.total_price
-    # 各顧客の注文ごとの請求金額合計の算出用コードがきちんと機能していない
+    # 各顧客の注文ごとの請求金額合計の算出用コード
   end
 
   def update

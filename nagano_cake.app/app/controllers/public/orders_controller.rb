@@ -43,7 +43,7 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items.all
     @order.customer_id = current_customer.id
-    @order.total_amount = @cart_items.cart_items_total_price(@cart_items)
+    @order.total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.postage = 800
   end
 

@@ -6,7 +6,7 @@
 <!--bookersのユーザー情報編集画面を参考にする-->
 
 
-    <%= form_with model: @customer, url: customer_path(current_customer), method: :patch do |f| %>
+    <%= form_with model: @customer, url: customer_path(current_customer.id), method: :patch do |f| %>
     <table>
       <thead>
          <tr>
@@ -36,28 +36,21 @@
          <tr>
             <th></th>
             <td class="pr-5 pl-5">
-              <div class="btn-toolbar">
-                  <%= f.submit "編集内容を保存", class: "btn btn btn-success btn-block w-50 pr-5 pl-5" %>
-                  &emsp; &emsp;
-                  <%= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger pr-5 pl-5" %>
-              </div>
+               <div class="row d-flex justify-content-center">
+                  <span class="pr-5"><%= f.submit "編集内容を保存", class: "btn btn btn-success" %></span>
+                  <span class="pr-5"><%= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger" %></span>
+               </div>
+              <!--<div class="btn-toolbar">-->
+              <!--    <%#= f.submit "編集内容を保存", class: "btn btn btn-success btn-block w-50 pr-5 pl-5" %>-->
+              <!--    <#% end %>-->
+              <!--    &emsp; &emsp;-->
+              <!--    <%#= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger pr-5 pl-5" %>-->
+              <!--</div>-->
             </td>
           </tr>
       </thead>
     </table>
 
-
-
-
-     <!--<div class="row d-flex justify-content-center">-->
-
-     <!--   <span class="pr-5"><= f.submit "編集内容を保存", class: "btn btn btn-success" %></span>-->
-
-     <!--   <span class="pr-5"><= link_to "退会する", customers_confirm_path, class: "btn btn btn-danger" %></span>-->
-
-     <!--</div>-->
-
    <% end %>
-
 
  </div>
