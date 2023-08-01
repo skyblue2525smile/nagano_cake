@@ -7,5 +7,6 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
+    #adminがログイン時、ログアウト後の遷移先はログイン画面になる
   end
 end
