@@ -3,7 +3,7 @@ class Admin::OrderDetailsController < ApplicationController
 
   def update
     @order_detail = OrderDetail.find(params[:id]) #orderモデルの呼び出すためにorder_detailを呼びだす
-    @order = @order_detail.order　#orderモデルの呼び出し
+    @order = @order_detail.order #orderモデルの呼び出し
     @order_details = @order.order_details #orderモデルに紐づくorder_detailsの呼び出し
 
     is_updated = true
@@ -21,9 +21,17 @@ class Admin::OrderDetailsController < ApplicationController
       @order.update(order_status: "preparing_delivery") if is_updated
       # is_updatedがtrueの場合に、注文ステータスが「発送準備中」に更新されます。上記のif文でis_updatedがfalseになっている場合、更新されません。
 
+     # 以下はまた別の実装方法(上記のコードのコンパクト版)
+      # if @order_details.where(making_status: "in_production").count == @order_details.count
+      #   @order.order_status == "preparing_delivery"
+      # end
+     # [製作ステータスが「製作完了」の商品の個数]＝[注文商品の個数]となれば注文ステータスが「発送準備中」に更新されるようにしたい
+     # 注：上記のコードは未完成
+
+
     # 以下はまた別の実装方法
     #   @order_detail = OrderDetail.where(order_id: params[:id])
-    #   @order_details.where(making_status: "製作中").count == 1
+
     #   @order.status = "製作中"
     #   @order.save
     # end
