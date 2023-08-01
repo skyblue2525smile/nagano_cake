@@ -33,7 +33,7 @@
           <th class="p-2"><b>注文ステータス</b></th>
           <td class="p-2">
             <%= form_with model: Order.new, url: admin_customer_order_path(@order.id), method: :patch do |f| %>
-              <%= f.select :order_status, options_for_select(Order.order_statuses_i18n.values) %>
+              <%= f.select :order_status, Order.order_statuses_i18n.keys.map { |k| [I18n.t("enums.order.order_status.#{k}"), k] } %>
               <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
           </td>
@@ -63,7 +63,7 @@
             <td class="p-2"><%= (order_detail.item.price * 1.1).floor * order_detail.quantity %></td>
             <td class="p-2">
             <%= form_with model: order_detail, url: admin_customer_order_detail_path, method: :patch do |f| %>
-              <%= f.select :making_status, options_for_select(OrderDetail.making_statuses_i18n.values) %>
+              <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k] } %>
               <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
             </td>

@@ -19,10 +19,10 @@ class Admin::OrdersController < ApplicationController
 
     if @order.update(order_params)
 
-      @order_details.update_all(status: 1)
-      redirect_to request_referer
+      @order_details.update_all(making_status: 1)
+      redirect_to request.referer
     else
-      redirect_to request_referer
+      redirect_to request.referer
       # @order_details.update_all(making_stastus: 1) if @order.order_status == "payment_confirmation"
       ## ①注文ステータスが「入金確認」とき、製作ステータスを全て「製作待ち」に更新する
       # 別の書き方

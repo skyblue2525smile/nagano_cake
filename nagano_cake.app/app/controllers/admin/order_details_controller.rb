@@ -2,10 +2,9 @@ class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
   def update
-    @order = Order.find(params[:order_id])
-    @order_detail = OrderDetail.find(params[:id])
+    @order_details = OrderDetail.find(params[:id])
     #@order_detail = OrderDetail.where(order_id: params[:id])
-    @order_details = @order.order_details.all
+    @order = @order_details.order_id
 
     is_updated = true
     if @order_detail.update(order_detail_params)

@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.integer "item_id", null: false
     t.integer "quantity", null: false
     t.integer "purchase_price", null: false
-    t.integer "making_status", default: 1, null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 2023_07_23_052514) do
     t.string "mailling_label", null: false
     t.integer "postage", null: false
     t.integer "total_amount", null: false
-    t.integer "method_of_payment", null: false
-    t.integer "order_status", default: 1, null: false
+    t.integer "method_of_payment", default: 0, null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
