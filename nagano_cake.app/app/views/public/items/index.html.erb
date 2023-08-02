@@ -9,7 +9,7 @@
           <%= image_tag item.get_profile_image(200, 200) %>
         <% end %>
         <p><b><%= link_to item.name, item_path(item.id) %></b></p>
-        <p><b><%= "￥" + item.price.to_s %></b></p>
+        <p><b><%= "￥" + (item.price*1.10).round.to_s %></b></p>
       </div>
     <% end %>
   </div>

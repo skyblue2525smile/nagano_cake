@@ -26,16 +26,16 @@
       <% @cart_items.each do |cart_item| %>
 
         <tr>
-          <td class="p-3"><%= cart_item.item.name %></td>
-          <td class="p-3"><%= cart_item.item.with_tax_price %></td>
+          <td class="pt-3 pb-3 pr-5"><%= cart_item.item.name %></td>
+          <td class="pt-3 pb-3"><%= cart_item.item.with_tax_price %></td>
           <%= form_with model: cart_item, url: cart_items_path, method: :post do |f| %>
            <%= f.hidden_field :item_id, :value => cart_item.item.id %>
-          <td><%= f.select :amount, [['1',1], ['2',2], ['3',3]] %>
+          <td><%= f.select :amount, [['1',1], ['2',2], ['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]] %>
           <%= f.submit "変更", class: "btn btn-success" %></td>
           <% end %>
 
           <td class="p-3"><%= cart_item.subtotal %></td>
-          <td class="p-3"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
+          <td class="pt-3 pb-3"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
           <% @sum +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
         </tr>
       <% end %>
