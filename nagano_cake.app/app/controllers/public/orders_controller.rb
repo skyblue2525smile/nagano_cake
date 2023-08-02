@@ -1,4 +1,8 @@
 class Public::OrdersController < ApplicationController
+
+  before_action :check, only: [:new]
+  #newアクションの前にcheck（メソッド名）を実行する;注文情報入力画面に行く前にメソッドを実行
+
   def new
     @order = Order.new
   end
@@ -10,6 +14,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @order.total_amount =  @order.total_price
   end
 
   def confirm
@@ -74,5 +79,12 @@ class Public::OrdersController < ApplicationController
 
   def address_params
     params.require(:address).permit(:customer_id, :address_name, :address, :postal_code)
+  end
+
+  def check
+    if current_customer.cart_items.count == 0
+      flash[:alert] = "カートに商品が入っていません。商品を入れてから実行してください。"
+      redirect_to items_path
+    end
   end
 end

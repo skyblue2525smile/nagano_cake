@@ -18,7 +18,8 @@
         <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to (l order.created_at), admin_customer_orders_path(order.customer.id) %></td>
+            <td><%= link_to (l order.created_at), admin_customer_order_path(order.customer.id, order) %></td>
+            <!--顧客別で注文情報を取り扱いたいので、idが２つ必要-->
             <td><%= order.customer.last_name + order.customer.first_name %></td>
             <td>
               <% @sum = 0 %>
