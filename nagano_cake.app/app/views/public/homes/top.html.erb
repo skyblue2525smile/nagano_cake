@@ -32,7 +32,9 @@
         <div class="row">
           <% @items.each do |item| %>
             <div class="col-md-3">
-              <%= image_tag item.get_profile_image(150,150) %>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_profile_image(150,150) %>
+              <% end %>
               <p><b><%= link_to item.name, item_path(item.id) %></b></p>
               <p><b><%= "￥" + item.price.to_s %></b></p>
             </div>
