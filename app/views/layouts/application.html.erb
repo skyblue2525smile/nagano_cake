@@ -157,6 +157,12 @@
               </li>
 
             <% elsif customer_signed_in? %>
+              <li class="nav-item">
+                <%= link_to customers_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  マイページ
+                  <i class="fas fa-user"></i>
+                <% end %>
+              </li>
 
               <li class="nav-item">
                 <%= link_to items_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
@@ -188,13 +194,6 @@
                   <i class="fas fa-store-alt"></i>
                 <% end %>
               </li>
-
-              <!--<li class="nav-item">-->
-              <!--  %= link_to introduction_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>-->
-              <!--    作家紹介-->
-              <!--    <i class="far fa-id-card"></i>-->
-              <!--  % end %>-->
-              <!--</li>-->
 
               <li class="nav-item">
                 <%= link_to items_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
