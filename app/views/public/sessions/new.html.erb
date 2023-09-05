@@ -4,11 +4,14 @@
   </div>
 
   <div class = "pt-3 pl-5 text-black">
-      <span class = "bg-light pr-3 pl-3 h6"><b>会員の方はこちらからログイン</b></span>
+    <span class = "bg-light pr-3 pl-3 h6">
+      *商品のご購入、マイページのご利用にはログインが必要です*
+    </span>
   </div>
 
+    <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
+    <!--()を付けている理由：追記した他のコードの影響を受けて、エラーが発生するリスクを回避するため-->
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="d-flex justify-content-center m-3">
         <table>
           <tr>
@@ -38,16 +41,9 @@
     <% end %>
 
   <div class = "pt-3 pl-5 text-black">
-    <span class = "bg-light pr-3 pl-3 h6"><b>会員登録がお済みでない方</b></span></br>
     <span class="ml-5">
-    <%= link_to "こちら", new_customer_registration_path %> &emsp;から新規登録を行ってください。
+    会員登録をされていない方は&emsp;<%= link_to "こちら", new_customer_registration_path %> &emsp;から新規登録をお願いいたします※
     </span>
   </div>
-
-
-
-
-
-  <!--<= render "public/shared/links" %>-->
 
 </div>

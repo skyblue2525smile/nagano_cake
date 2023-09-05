@@ -12,8 +12,9 @@
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <p><%= f.select :amount, [['1',1], ['2',2], ['3',3]], {prompt: "選択して下さい", :class => "form-control-sm"}  %></p>
-        <p><%= f.submit "カートに入れる", class: "btn btn-success" %></p>
+        <p><%= f.select :amount, *[1..10], {prompt: "選択して下さい", :class => "form-control-sm"}  %>
+           <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        </p>
         <% end %>
     </div>
   </div>

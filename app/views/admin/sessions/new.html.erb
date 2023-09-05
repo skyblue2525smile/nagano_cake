@@ -3,12 +3,15 @@
   <span class = "bg-light pr-3 pl-3 h5">管理者ログイン</span>
 </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
+<!--()を付けている理由：追記した他のコードの影響を受けて、エラーが発生するリスクを回避するため-->
 
   <div class="field d-flex justify-content-center">
-    <span class="p-1"><%= f.label :メールアドレス %></span>
     <span class="p-1">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40%>
+      <%= f.label :メールアドレス %>
+      </span>
+    <span class="p-1">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %>
     </span>
   </div>
 

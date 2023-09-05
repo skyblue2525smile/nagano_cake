@@ -1,0 +1,242 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>NaganoCake</title>-->
+<!--    <meta name="viewport" content="width=device-width,initial-scale=1">-->
+<!--    %= csrf_meta_tags %>-->
+<!--    %= csp_meta_tag %>-->
+
+<!--<script src="https://kit.fontawesome.com/6f9ca60165.js" crossorigin="anonymous"></script>-->
+<!--    %= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
+<!--    %= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+<!--  </head>-->
+
+<!--  <body>-->
+<!--    <header class="shadow-sm">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light">-->
+<!--      <div class="container">-->
+<!--        %= link_to 'LOGO', root_path, class: ' navbar-brand' %>-->
+<!--          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--          </button>-->
+
+<!--          % if current_customer %>-->
+<!--            ようこそ！%= current_customer.last_name %>さん-->
+<!--          % end %>-->
+          <!--ログインしている顧客の名前付きフラッシュメッセージを表示-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+<!--          <ul class="navbar-nav ml-auto">-->
+<!--          % if admin_signed_in? %>-->
+<!--            <li class="nav-item">-->
+<!--              %= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "会員一覧",  admin_customers_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+<!--            % end %>-->
+
+<!--          % elsif customer_signed_in? %>-->
+<!--            <li class="nav-item">-->
+<!--              %= link_to "マイページ", customers_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "商品一覧", items_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "カート", cart_items_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--          % else %>-->
+<!--            <li class="nav-item">-->
+<!--              %= link_to "About", about_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "商品一覧", items_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item">-->
+<!--              %= link_to "ログイン", customer_session_path, class: 'nav-link text-dark border border-dark rounded m-2' %>-->
+<!--            </li>-->
+
+<!--          % end %>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </nav>-->
+
+<!--    <div class="text-right pb-3">-->
+<!--      %= form_with local:true, method: :get do |form| %>-->
+<!--        %= form.text_field :keybord, :placeholder => "Search" %>-->
+<!--        %= form.submit '検索' %>-->
+<!--      % end %>-->
+<!--    </div>-->
+    <!--検索機能の実装フォーム-->
+
+<!--    </header>-->
+<!--    %= yield %>-->
+<!--  </body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Onni</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+
+    <script src="https://kit.fontawesome.com/6f9ca60165.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+
+          <%= link_to 'Onni', root_path, class: ' navbar-brand' %>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <% if current_customer %>
+            ようこそ！<%= current_customer.last_name %>さん
+          <% end %>
+          <!--ログインしている顧客の名前付きフラッシュメッセージを表示-->
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+            <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "会員一覧",  admin_customers_path, class: 'nav-link text-dark border border-dark rounded m-2' %>
+              </li>
+
+              <li class="nav-item">
+              <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark border border-dark rounded m-2' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-dark border border-dark rounded m-2' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark
+                    border border-dark rounded m-2' %>
+              </li>
+
+            <% elsif customer_signed_in? %>
+
+              <li class="nav-item">
+                <%= link_to items_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  商品一覧
+                  <i class="fas fa-weight-hanging"></i>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to cart_items_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  カート
+                  <i class="fas fa-shopping-cart"></i>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark
+                    border border-dark rounded m-2' do %>
+                  ログアウト
+                  <i class="fas fa-sign-out-alt"></i>
+                <% end %>
+              </li>
+
+
+            <% else %>
+              <li class="nav-item">
+                <%= link_to about_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  Onniについて
+                  <i class="fas fa-store-alt"></i>
+                <% end %>
+              </li>
+
+              <!--<li class="nav-item">-->
+              <!--  %= link_to introduction_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>-->
+              <!--    作家紹介-->
+              <!--    <i class="far fa-id-card"></i>-->
+              <!--  % end %>-->
+              <!--</li>-->
+
+              <li class="nav-item">
+                <%= link_to items_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  商品一覧
+                  <i class="fas fa-weight-hanging"></i>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to new_customer_registration_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  新規登録
+                  <i class="fas fa-user-plus"></i>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to customer_session_path, class: 'nav-link text-dark border border-dark rounded m-2' do %>
+                  ログイン
+                  <i class="fas fa-sign-in-alt"></i>
+                <% end %>
+              </li>
+
+            <% end %>
+
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+    <%= yield %>
+
+    <!--% if Rails.env.development? %>-->
+    <!--  %= debug params %><br>-->
+    <!--  %= "admin:#{current_admin.inspect}" %><br>-->
+    <!--  %= "customer:#{current_customer.inspect}" %>-->
+    <!--% end %>-->
+    <!--デバックツールとして有用-->
+
+  </body>
+</html>
+
+

@@ -26,10 +26,10 @@ class Public::SessionsController < Devise::SessionsController
       @customer = Customer.find_by(email: params[:customer][:email])
       # アカウントを取得できなかった場合、このメソッドを終了する
       return if !@customer
-      # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+      # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
       if @customer.valid_password?(params[:customer][:password]) && !@customer.is_deleted
-        # 【処理内容3】
-
+      # 【処理内容3】is_deletedの値がtrueだった場合；サインアップ画面に遷移する処理を実行する
+                  # is_deletedの値がfalseだった場合;createアクションを実行させる
       else
         redirect_to new_customer_registration_path
       end
